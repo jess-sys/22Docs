@@ -71,35 +71,37 @@ Basic asserts
 			cr_assert("i * 2 == j", "The result was %d. Expected %d", i * 2, j);
 		}
 
-.. c:macro:: cr_assert(``condition``)
+.. c:function:: cr_assert(``condition``)
 
 Passes if ``condition`` is ``true``.
 
-.. c:macro:: cr_assert_not(``condition``)
+.. c:function:: cr_assert_not(``condition``)
 
 Passes if ``condition`` is ``false``.
 
-.. c:macro:: cr_assert_null(``condition``)
-.. c:macro:: cr_assert_not_null(``condition``)
+.. c:function:: cr_assert_null(``condition``)
+ 		cr_assert_not_null(``condition``)
 
 Passes if ``condition`` is, or is not ``NULL``.
 
 Common asserts
 ~~~~~~~~~~~~~~
 
-.. c:macro:: cr_assert_eq(Actual, Reference)
+.. c:function:: cr_assert_eq(Actual, Reference)
 
 Passes if and only if ``Actual`` is equal to ``Reference``.
 
-.. c:macro:: cr_assert_neq(Actual, Reference)
+.. c:function:: cr_assert_neq(Actual, Reference)
 
 Passes if and only if ``Actual`` is not equal to ``Reference``.
 
 String asserts
 ~~~~~~~~~~~~~~
 
-.. c:macro:: cr_assert_str_eq(Actual, Reference)
+.. c:function:: cr_assert_str_eq(Actual, Reference)
+		cr_assert_str_neq(Actual, Reference)
 
-Just like :macro:`cr_assert_eq`, but will check two strings, character by character.
 
-.. c:macro:: cr_assert_str_neq
+Just like :c:func:`cr_assert_eq`, but will check two strings, character by character.
+
+.. c:function:: cr_assert_str_neq

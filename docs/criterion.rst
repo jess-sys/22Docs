@@ -174,3 +174,41 @@ Compares the content of ``stdout`` with ``Value``. This assertion behaves simila
 		cr_assert_stderr_neq_str(Value)
 
 Compares the content of ``stderr`` (a.k.a. "error output") with ``Value``.
+
+Test options
+------------
+
+Options reference
+~~~~~~~~~~~~~~~~~
+
+It is possible for you to provide additional parameters to a test. Here is a full list of thos parameters and what you can do with them.
+
+.. c:member:: .init
+
+This parameter takes a function pointer as an argument. Criterion will execute the function just before running the test.
+
+Note that the function pointer should be of type ``void (*)(void)``.
+
+.. rubric:: Sample usage
+
+	Here is a sample usage of this parameter.
+	
+	.. code-block:: c
+
+		void my_func(void)
+		{
+			my_putstr("Here is the beginning of my test\n");
+		}
+
+		Test(suite_name, test_name, .init = my_func)
+		{
+			//tests
+		}
+
+.. c:member:: .fini
+
+This parameter takes a function pointer to a function that will be executed after the tests is finished.
+
+It takes the same pointer type as the ``.init`` parameter.
+
+.. c:member:: .signal

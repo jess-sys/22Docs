@@ -105,6 +105,10 @@
 <li class="toctree-l3"><a class="reference internal" href="#redirections">Redirections</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="#test-options">Test options</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#options-reference">Options reference</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="basics.html">C Basics</a></li>
@@ -370,6 +374,32 @@ If you want to compare arrays, please refer to <a class="reference internal" hre
 <dd></dd></dl>
 
 <p>Compares the content of <code class="docutils literal"><span class="pre">stderr</span></code> (a.k.a. “error output”) with <code class="docutils literal"><span class="pre">Value</span></code>.</p>
+</div>
+</div>
+<div class="section" id="test-options">
+<h2>Test options<a class="headerlink" href="#test-options" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="options-reference">
+<h3>Options reference<a class="headerlink" href="#options-reference" title="Permalink to this headline">¶</a></h3>
+<p>It is possible for you to provide additional parameters to a test. Here is a full list of thos parameters and what you can do with them.</p>
+<dl class="member">
+<dt id="c..init">
+<code class="descname">.init</code><a class="headerlink" href="#c..init" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>This parameter takes a function pointer as an argument. Criterion will execute the function just before running the test.</p>
+<p>Note that the function pointer should be of type <code class="docutils literal"><span class="pre">void</span> <span class="pre">(*)(void)</span></code>.</p>
+<dl class="member">
+<dt id="c..fini">
+<code class="descname">.fini</code><a class="headerlink" href="#c..fini" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>This parameter takes a function pointer to a function that will be executed after the tests is finished.</p>
+<p>It takes the same pointer type as the <code class="docutils literal"><span class="pre">.init</span></code> parameter.</p>
+<dl class="member">
+<dt id="c..signal">
+<code class="descname">.signal</code><a class="headerlink" href="#c..signal" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
 </div>
 </div>

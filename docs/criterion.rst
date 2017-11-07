@@ -100,6 +100,6 @@ String asserts
 .. c:function:: cr_assert_str_eq(Actual, Reference) c:function:: cr_assert_str_neq
 
 
-Just like :c:function:`cr_assert_eq`, but will check two strings, character by character.
+Just like :c:func:`cr_assert_eq`, but will check two strings, character by character.
 
 .. c:function:: cr_assert_str_neq

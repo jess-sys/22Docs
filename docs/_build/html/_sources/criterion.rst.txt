@@ -57,17 +57,51 @@ Let's see the full list of Criterion's asserts.
 Basic asserts
 ~~~~~~~~~~~~~
 
-<<<<<<< HEAD
+.. note::
+	Additional parameters
+	In addition to the condition tested by the following tests, it is possible to give a string as parameter which will be printed to stderr if the test fails.
+	This optionnal string can take printf-like arguments.
+	For example, you can do something like:
+
+	.. code-block:: c
+
+		Test(suite_name, test, name) {
+			int i = 0;
+			int j = 2;
+			cr_assert("i * 2 == j", "The result was %d. Expected %d", i * 2, j);
+		}
+
 .. c:macro:: cr_assert(``condition``)
+
 Passes if ``condition`` is ``true``.
 
 .. c:macro:: cr_assert_not(``condition``)
+
 Passes if ``condition`` is ``false``.
 
 .. c:macro:: cr_assert_null(``condition``)
-Passes if ``condition`` is ``NULL``.
-=======
-.. c:macro:: cr_assert(Condition)
 
-Passes if ``condition`` is true.
->>>>>>> 78f7512b413c3e56816d116570ff135ff9e32af7
+Passes if ``condition`` is ``NULL``.
+
+.. c:macro:: cr_assert_not_null(``condition``)
+
+Passes if ``condition`` is not ``NULL``
+
+
+Common asserts
+~~~~~~~~~~~~~~
+
+.. c:macro:: cr_assert_eq(Actual, Reference)
+
+Passes if and only if ``Actual`` is equal to ``Reference``.
+
+.. c:macro:: cr_assert_neq(Actual, Reference)
+
+Passes if and only if ``Actual`` is not equal to ``Reference``.
+
+String asserts
+~~~~~~~~~~~~~~
+
+.. c:macro:: cr_assert_str_eq(Actual, Reference)
+
+Passes if and only if the ``Actual`` string is lexicographically equal to ``Expected``.

@@ -104,7 +104,7 @@ Passes if ``condition`` is ``false``.
 .. c:function:: cr_assert_null(``condition``)
  		cr_assert_not_null(``condition``)
 
-Passes if ``condition`` is, or is not ``NULL``.
+Passes if ``condition`` is ``NULL``, or is not ``NULL``.
 
 Common asserts
 ~~~~~~~~~~~~~~

@@ -39,6 +39,9 @@ Creating a test follows this pattern :
 The ``suite_name`` must be the name of a set of tests, which will help you know exactly what part of your code fails.
 The ``test_name`` is here to help you know which precise test failed, and thus will be usefull to help you debug your code.
 
+.. DANGER::
+	If you want your tests to work, you must compile your code with criterion's library using the ``-lcriterion`` flag. You should also consider running your code with the ``--verbose`` flag if you want a full summary of the test's results.
+
 Asserts
 -------
 
@@ -54,6 +57,28 @@ Let's see an example using Criterion's most basic assert, ``cr_assert``. This as
 Here, as one plus one will always be equal to two, the test will always pass.
 Let's see the full list of Criterion's asserts.
 
+.. WARNING::
+	All asserts are located in the header ``<criterion/criterion.h>``. Don't forget to include this header in order to make your tests functionnal.
+
+.. note::
+	Most asserts here have the ``assert`` keyword in their name. You should be aware that using those macros will stop the whole test right away if they fail. If you want to run some code after the test, even if it fail, you should really consider changing ``assert`` with ``expect``. For example, in the followinf code the printf function will not be executed :
+
+	.. code-block:: c
+
+		Test(suite_name, test_name) {
+			cr_assert(0);
+			printf("I wanted to run this code :/");
+		}
+
+	But in this example it will run :
+
+	.. code-block:: c
+
+		Test(suite_name, test_name) {
+			cr_expect(0);
+			printf("I will live :D");
+		}
+
 Basic asserts
 ~~~~~~~~~~~~~
 
@@ -65,41 +90,43 @@ Basic asserts
 
 	.. code-block:: c
 
-		Test(suite_name, test, name) {
+		Test(suite_name, test_name) {
 			int i = 0;
 			int j = 2;
 			cr_assert("i * 2 == j", "The result was %d. Expected %d", i * 2, j);
 		}
 
-.. c:macro:: cr_assert(``condition``)
+.. c:function:: cr_assert(``condition``)
 
 Passes if ``condition`` is ``true``.
 
-.. c:macro:: cr_assert_not(``condition``)
+.. c:function:: cr_assert_not(``condition``)
 
 Passes if ``condition`` is ``false``.
 
-.. c:macro:: cr_assert_null(``condition``)
-.. c:macro:: cr_assert_not_null(``condition``)
+.. c:function:: cr_assert_null(``condition``)
+ 		cr_assert_not_null(``condition``)
 
 Passes if ``condition`` is, or is not ``NULL``.
 
 Common asserts
 ~~~~~~~~~~~~~~
 
-.. c:macro:: cr_assert_eq(Actual, Reference)
+.. c:function:: cr_assert_eq(Actual, Reference)
 
 Passes if and only if ``Actual`` is equal to ``Reference``.
 
-.. c:macro:: cr_assert_neq(Actual, Reference)
+.. c:function:: cr_assert_neq(Actual, Reference)
 
 Passes if and only if ``Actual`` is not equal to ``Reference``.
 
 String asserts
 ~~~~~~~~~~~~~~
 
-.. c:macro:: cr_assert_str_eq(Actual, Reference)
+.. c:function:: cr_assert_str_eq(Actual, Reference)
+		cr_assert_str_neq(Actual, Reference)
 
-Just like :macro:`cr_assert_eq`, but will check two strings, character by character.
 
-.. c:macro:: cr_assert_str_neq
+Just like :c:func:`cr_assert_eq`, but will check two strings, character by character.
+
+.. c:function:

@@ -197,6 +197,10 @@ Creating a test follows this pattern :</p>
 </div>
 <p>The <code class="docutils literal"><span class="pre">suite_name</span></code> must be the name of a set of tests, which will help you know exactly what part of your code fails.
 The <code class="docutils literal"><span class="pre">test_name</span></code> is here to help you know which precise test failed, and thus will be usefull to help you debug your code.</p>
+<div class="admonition danger">
+<p class="first admonition-title">Danger</p>
+<p class="last">If you want your tests to work, you must compile your code with criterion’s library using the <code class="docutils literal"><span class="pre">-lcriterion</span></code> flag. You should also consider running your code with the <code class="docutils literal"><span class="pre">--verbose</span></code> flag if you want a full summary of the test’s results.</p>
+</div>
 </div>
 </div>
 <div class="section" id="asserts">
@@ -210,6 +214,27 @@ Let’s see an example using Criterion’s most basic assert, <code class="docut
 </div>
 <p>Here, as one plus one will always be equal to two, the test will always pass.
 Let’s see the full list of Criterion’s asserts.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">All asserts are located in the header <code class="docutils literal"><span class="pre">&lt;criterion/criterion.h&gt;</span></code>. Don’t forget to include this header in order to make your tests functionnal.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Most asserts here have the <code class="docutils literal"><span class="pre">assert</span></code> keyword in their name. You should be aware that using those macros will stop the whole test right away if they fail. If you want to run some code after the test, even if it fail, you should really consider changing <code class="docutils literal"><span class="pre">assert</span></code> with <code class="docutils literal"><span class="pre">expect</span></code>. For example, in the followinf code the printf function will not be executed :</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">Test</span><span class="p">(</span><span class="n">suite_name</span><span class="p">,</span> <span class="n">test_name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cr_assert</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;I wanted to run this code :/&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>But in this example it will run :</p>
+<div class="last highlight-c"><div class="highlight"><pre><span></span><span class="n">Test</span><span class="p">(</span><span class="n">suite_name</span><span class="p">,</span> <span class="n">test_name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">cr_expect</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">&quot;I will live :D&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="basic-asserts">
 <h3>Basic asserts<a class="headerlink" href="#basic-asserts" title="Permalink to this headline">¶</a></h3>
 <div class="admonition note">
@@ -218,7 +243,7 @@ Let’s see the full list of Criterion’s asserts.</p>
 In addition to the condition tested by the following tests, it is possible to give a string as parameter which will be printed to stderr if the test fails.
 This optionnal string can take printf-like arguments.
 For example, you can do something like:</p>
-<div class="last highlight-c"><div class="highlight"><pre><span></span><span class="n">Test</span><span class="p">(</span><span class="n">suite_name</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span> <span class="p">{</span>
+<div class="last highlight-c"><div class="highlight"><pre><span></span><span class="n">Test</span><span class="p">(</span><span class="n">suite_name</span><span class="p">,</span> <span class="n">test_name</span><span class="p">)</span> <span class="p">{</span>
         <span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
         <span class="kt">int</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">2</span><span class="p">;</span>
         <span class="n">cr_assert</span><span class="p">(</span><span class="s">&quot;i * 2 == j&quot;</span><span class="p">,</span> <span class="s">&quot;The result was %d. Expected %d&quot;</span><span class="p">,</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">2</span><span class="p">,</span> <span class="n">j</span><span class="p">);</span>
@@ -226,24 +251,21 @@ For example, you can do something like:</p>
 </pre></div>
 </div>
 </div>
-<dl class="macro">
+<dl class="function">
 <dt id="c.cr_assert">
 <code class="descname">cr_assert</code><span class="sig-paren">(</span>condition<span class="sig-paren">)</span><a class="headerlink" href="#c.cr_assert" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Passes if <code class="docutils literal"><span class="pre">condition</span></code> is <code class="docutils literal"><span class="pre">true</span></code>.</p>
-<dl class="macro">
+<dl class="function">
 <dt id="c.cr_assert_not">
 <code class="descname">cr_assert_not</code><span class="sig-paren">(</span>condition<span class="sig-paren">)</span><a class="headerlink" href="#c.cr_assert_not" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Passes if <code class="docutils literal"><span class="pre">condition</span></code> is <code class="docutils literal"><span class="pre">false</span></code>.</p>
-<dl class="macro">
+<dl class="function">
 <dt id="c.cr_assert_null">
 <code class="descname">cr_assert_null</code><span class="sig-paren">(</span>condition<span class="sig-paren">)</span><a class="headerlink" href="#c.cr_assert_null" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="macro">
 <dt id="c.cr_assert_not_null">
 <code class="descname">cr_assert_not_null</code><span class="sig-paren">(</span>condition<span class="sig-paren">)</span><a class="headerlink" href="#c.cr_assert_not_null" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -252,13 +274,13 @@ For example, you can do something like:</p>
 </div>
 <div class="section" id="common-asserts">
 <h3>Common asserts<a class="headerlink" href="#common-asserts" title="Permalink to this headline">¶</a></h3>
-<dl class="macro">
+<dl class="function">
 <dt id="c.cr_assert_eq">
 <code class="descname">cr_assert_eq</code><span class="sig-paren">(</span>Actual, Reference<span class="sig-paren">)</span><a class="headerlink" href="#c.cr_assert_eq" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Passes if and only if <code class="docutils literal"><span class="pre">Actual</span></code> is equal to <code class="docutils literal"><span class="pre">Reference</span></code>.</p>
-<dl class="macro">
+<dl class="function">
 <dt id="c.cr_assert_neq">
 <code class="descname">cr_assert_neq</code><span class="sig-paren">(</span>Actual, Reference<span class="sig-paren">)</span><a class="headerlink" href="#c.cr_assert_neq" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -267,17 +289,14 @@ For example, you can do something like:</p>
 </div>
 <div class="section" id="string-asserts">
 <h3>String asserts<a class="headerlink" href="#string-asserts" title="Permalink to this headline">¶</a></h3>
-<dl class="macro">
+<dl class="function">
 <dt id="c.cr_assert_str_eq">
 <code class="descname">cr_assert_str_eq</code><span class="sig-paren">(</span>Actual, Reference<span class="sig-paren">)</span><a class="headerlink" href="#c.cr_assert_str_eq" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<p>Just like <a href="#id1"><span class="problematic" id="id2">:macro:`cr_assert_eq`</span></a>, but will check two strings, character by character.</p>
-<dl class="macro">
 <dt id="c.cr_assert_str_neq">
-<code class="descname">cr_assert_str_neq</code><a class="headerlink" href="#c.cr_assert_str_neq" title="Permalink to this definition">¶</a></dt>
+<code class="descname">cr_assert_str_neq</code><span class="sig-paren">(</span>Actual, Reference<span class="sig-paren">)</span><a class="headerlink" href="#c.cr_assert_str_neq" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+<p>Just like <a class="reference internal" href="#c.cr_assert_eq" title="cr_assert_eq"><code class="xref c c-func docutils literal"><span class="pre">cr_assert_eq()</span></code></a>, but will check two strings, character by character.</p>
 </div>
 </div>
 </div>

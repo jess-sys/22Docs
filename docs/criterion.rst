@@ -12,7 +12,7 @@ Introduction
 ------------
 
 Setup
-~~~~~~~
+~~~~~
 
 If you haven’t installed Criterion yet, please download install_Criterion.sh from
 the intranet, then run it. Criterion will be installed.

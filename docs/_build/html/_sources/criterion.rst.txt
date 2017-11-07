@@ -117,7 +117,7 @@ Passes if and only if ``Actual`` is equal (or not equal, if you are using ``neq`
 .. c:function:: cr_assert_lt(Actual, Reference)
 		cr_assert_leq(Actual, Reference)
 
-Will pass if ``Actual`` is smaller than (or smaller than or equal if you used ``leq``) ``Reference``.
+Will pass if ``Actual`` is lesser than (or lesser than or equal if you used ``leq``) ``Reference``.
 
 .. c:function:: cr_assert_gt(Actual, Reference)
 		cr_assert_geq(Actual, Reference)

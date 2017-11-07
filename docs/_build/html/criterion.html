@@ -200,11 +200,7 @@ Creating a test follows this pattern :</p>
 The <code class="docutils literal"><span class="pre">test_name</span></code> is here to help you know which precise test failed, and thus will be usefull to help you debug your code.</p>
 <div class="admonition danger">
 <p class="first admonition-title">Danger</p>
-<<<<<<< HEAD
-<p class="last">If you want your tests to work, you must compile your code with Criterion’s library using the <code class="docutils literal"><span class="pre">-lCriterion</span></code> flag. You should also consider running your code with the <code class="docutils literal"><span class="pre">--verbose</span></code> flag if you want a full summary of the test’s results.</p>
-=======
 <p class="last">If you want your tests to work, you must compile your code with Criterion’s library using the <code class="docutils literal"><span class="pre">-lcriterion</span></code> flag. You should also consider running your code with the <code class="docutils literal"><span class="pre">--verbose</span></code> flag if you want a full summary of the test’s results.</p>
->>>>>>> 1c0c24a5c2d508b14c853e8c210f72c58a5ff987
 </div>
 </div>
 </div>
@@ -299,11 +295,7 @@ If you want to compare array, please refer to <a class="reference internal" href
 <code class="descname">cr_assert_leq</code><span class="sig-paren">(</span>Actual, Reference<span class="sig-paren">)</span><a class="headerlink" href="#c.cr_assert_leq" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<<<<<<< HEAD
 <p>Will pass if <code class="docutils literal"><span class="pre">Actual</span></code> is less than (or less than or equal if you used <code class="docutils literal"><span class="pre">leq</span></code>) <code class="docutils literal"><span class="pre">Reference</span></code>.</p>
-=======
-<p>Will pass if <code class="docutils literal"><span class="pre">Actual</span></code> is lesser than (or lesser than or equal if you used <code class="docutils literal"><span class="pre">leq</span></code>) <code class="docutils literal"><span class="pre">Reference</span></code>.</p>
->>>>>>> 1c0c24a5c2d508b14c853e8c210f72c58a5ff987
 <dl class="function">
 <dt id="c.cr_assert_gt">
 <code class="descname">cr_assert_gt</code><span class="sig-paren">(</span>Actual, Reference<span class="sig-paren">)</span><a class="headerlink" href="#c.cr_assert_gt" title="Permalink to this definition">¶</a></dt>
@@ -335,7 +327,6 @@ If you want to compare array, please refer to <a class="reference internal" href
 <p class="first admonition-title">Note</p>
 <p class="last">There are also <code class="docutils literal"><span class="pre">str_lt</span></code>, <code class="docutils literal"><span class="pre">str_gt</span></code>, etc… macros that will check the lexicographical values of the two sting given, just like your <code class="docutils literal"><span class="pre">my_strcmp</span></code> would do (if you’ve done it well :D).</p>
 </div>
-<<<<<<< HEAD
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">Those functions won’t allow you to compare the output of your progam with a given reference string. To do so you must use redirections. Check <a class="reference internal" href="#c.cr_assert_stdout_eq_str" title="cr_assert_stdout_eq_str"><code class="xref c c-func docutils literal"><span class="pre">cr_assert_stdout_eq_str()</span></code></a> for more info.</p>
@@ -381,8 +372,6 @@ To use the following assertions, you must include <code class="docutils literal"
 <dd></dd></dl>
 
 <p>Compares the content of <code class="docutils literal"><span class="pre">stderr</span></code> (a.k.a. “error output”) with <code class="docutils literal"><span class="pre">Value</span></code>.</p>
-=======
->>>>>>> 1c0c24a5c2d508b14c853e8c210f72c58a5ff987
 </div>
 </div>
 </div>

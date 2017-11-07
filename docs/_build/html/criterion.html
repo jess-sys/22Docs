@@ -367,6 +367,20 @@ If you want to compare arrays, please refer to <a class="reference internal" hre
 <dd></dd></dl>
 
 <p>Compares the content of <code class="docutils literal"><span class="pre">stdout</span></code> with <code class="docutils literal"><span class="pre">Value</span></code>. This assertion behaves similarly to <a class="reference internal" href="#c.cr_assert_str_eq" title="cr_assert_str_eq"><code class="xref c c-func docutils literal"><span class="pre">cr_assert_str_eq()</span></code></a>.</p>
+<p>Here is a sample usage of this assert.</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">error</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+        <span class="n">write</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&quot;error&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+        <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">Test</span><span class="p">(</span><span class="n">errors</span><span class="p">,</span> <span class="n">exit_code</span><span class="p">)</span>
+<span class="p">{</span>
+        <span class="n">error</span><span class="p">();</span>
+        <span class="n">cr_assert_stderr_eq</span><span class="p">(</span><span class="s">&quot;error&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <dl class="function">
 <dt id="c.cr_assert_stderr_eq_str">
 <code class="descname">cr_assert_stderr_eq_str</code><span class="sig-paren">(</span>Value<span class="sig-paren">)</span><a class="headerlink" href="#c.cr_assert_stderr_eq_str" title="Permalink to this definition">¶</a></dt>

@@ -170,6 +170,23 @@ Redirections
 
 Compares the content of ``stdout`` with ``Value``. This assertion behaves similarly to :c:func:`cr_assert_str_eq`.
 
+Here is a sample usage of this assert.
+
+.. code-block:: c
+
+	int error(void)
+	{
+		write(2, "error", 5);
+		exit(0);
+	}
+
+	Test(errors, exit_code)
+	{
+		error();
+		cr_assert_stderr_eq("error", "");
+	}
+
+
 .. c:function:: cr_assert_stderr_eq_str(Value)
 		cr_assert_stderr_neq_str(Value)
 

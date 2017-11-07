@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Technical Documentation
-=======================
+C Basics
+========
 
 Table of contents
 -----------------
@@ -12,11 +12,12 @@ Table of contents
 .. toctree::
    :maxdepth: 2
 
-   criterion
-   basics
+Just to be sure that you still know the basics.
 
-Introduction
-------------
+Heading two
+-----------
 
-The purpose of this documentation is to help you during your EPITECH course.
-You will find concise documentation on main topics studied at EPITECH.
+Heading three
+~~~~~~~~~~~~~
+
+write here

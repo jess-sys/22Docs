@@ -278,7 +278,7 @@ For example, you can do something like:</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
 <p class="last">Please note that the following asserts only work for non-array comparison.
-If you want to compare array, please refer to <a class="reference internal" href="#c.cr_assert_str_eq" title="cr_assert_str_eq"><code class="xref c c-func docutils literal"><span class="pre">cr_assert_str_eq()</span></code></a> or <a class="reference internal" href="#c.cr_assert_arr_eq" title="cr_assert_arr_eq"><code class="xref c c-func docutils literal"><span class="pre">cr_assert_arr_eq()</span></code></a>.</p>
+If you want to compare arrays, please refer to <a class="reference internal" href="#c.cr_assert_str_eq" title="cr_assert_str_eq"><code class="xref c c-func docutils literal"><span class="pre">cr_assert_str_eq()</span></code></a> or <a class="reference internal" href="#c.cr_assert_arr_eq" title="cr_assert_arr_eq"><code class="xref c c-func docutils literal"><span class="pre">cr_assert_arr_eq()</span></code></a>.</p>
 </div>
 <dl class="function">
 <dt id="c.cr_assert_eq">
@@ -307,6 +307,10 @@ If you want to compare array, please refer to <a class="reference internal" href
 </div>
 <div class="section" id="string-asserts">
 <h3>String asserts<a class="headerlink" href="#string-asserts" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Those functions won’t allow you to compare the output of your progam with a given reference string. To do so you must use redirections. Check <a class="reference internal" href="#c.cr_assert_stdout_eq_str" title="cr_assert_stdout_eq_str"><code class="xref c c-func docutils literal"><span class="pre">cr_assert_stdout_eq_str()</span></code></a> for more info.</p>
+</div>
 <dl class="function">
 <dt id="c.cr_assert_str_eq">
 <code class="descname">cr_assert_str_eq</code><span class="sig-paren">(</span>Actual, Reference<span class="sig-paren">)</span><a class="headerlink" href="#c.cr_assert_str_eq" title="Permalink to this definition">¶</a></dt>
@@ -327,10 +331,6 @@ If you want to compare array, please refer to <a class="reference internal" href
 <p class="first admonition-title">Note</p>
 <p class="last">There are also <code class="docutils literal"><span class="pre">str_lt</span></code>, <code class="docutils literal"><span class="pre">str_gt</span></code>, etc… macros that will check the lexicographical values of the two sting given, just like your <code class="docutils literal"><span class="pre">my_strcmp</span></code> would do (if you’ve done it well :D).</p>
 </div>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Those functions won’t allow you to compare the output of your progam with a given reference string. To do so you must use redirections. Check <a class="reference internal" href="#c.cr_assert_stdout_eq_str" title="cr_assert_stdout_eq_str"><code class="xref c c-func docutils literal"><span class="pre">cr_assert_stdout_eq_str()</span></code></a> for more info.</p>
-</div>
 </div>
 <div class="section" id="array-asserts">
 <h3>Array asserts<a class="headerlink" href="#array-asserts" title="Permalink to this headline">¶</a></h3>
@@ -342,18 +342,16 @@ If you want to compare array, please refer to <a class="reference internal" href
 <dd></dd></dl>
 
 <p>Compares each element of <code class="docutils literal"><span class="pre">Actual</span></code> with each of <code class="docutils literal"><span class="pre">Expected</span></code>.</p>
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Caution
-This assertion seems not to behave correctly. You should consider comparing each element of both arrays using a <code class="docutils literal"><span class="pre">while</span></code> loop.</p>
+<div class="admonition danger">
+<p class="first admonition-title">Danger</p>
+<p class="last">This assertion seems not to behave correctly. You should consider comparing each element of both arrays using a <code class="docutils literal"><span class="pre">while</span></code> loop.</p>
 </div>
 </div>
 <div class="section" id="redirections">
 <h3>Redirections<a class="headerlink" href="#redirections" title="Permalink to this headline">¶</a></h3>
 <div class="admonition warning">
 <p class="first admonition-title">Warning</p>
-<p class="last">Imports
-To use the following assertions, you must include <code class="docutils literal"><span class="pre">&lt;criterion/redirect.h&gt;</span></code> along with <code class="docutils literal"><span class="pre">&lt;criterion/criterion.h&gt;</span></code>.
+<p class="last">To use the following assertions, you must include <code class="docutils literal"><span class="pre">&lt;criterion/redirect.h&gt;</span></code> along with <code class="docutils literal"><span class="pre">&lt;criterion/criterion.h&gt;</span></code>.
 <code class="docutils literal"><span class="pre">redirect.h</span></code> allows Criterion to get the content of stdout and stderr and run asserts on it.</p>
 </div>
 <dl class="function">

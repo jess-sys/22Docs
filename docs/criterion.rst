@@ -1,7 +1,4 @@
-.. EPITECH 2022 - Technical Documentation documentation master file, created by
-   sphinx-quickstart on Tue Nov  7 09:05:01 2017.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+.. Main criterion documentation file
 
 Criterion
 ============
@@ -111,7 +108,7 @@ Common asserts
 
 .. note::
 	Please note that the following asserts only work for non-array comparison.
-	If you want to compare array, please refer to :c:func:`cr_assert_str_eq` or :c:func:`cr_assert_arr_eq`.
+	If you want to compare arrays, please refer to :c:func:`cr_assert_str_eq` or :c:func:`cr_assert_arr_eq`.
 
 
 .. c:function:: cr_assert_eq(Actual, Reference)
@@ -132,6 +129,10 @@ Will pass if ``Actual`` is greater than (or greater than or equal if you used ``
 String asserts
 ~~~~~~~~~~~~~~
 
+.. note::
+	Those functions won't allow you to compare the output of your progam with a given reference string. To do so you must use redirections. Check :c:func:`cr_assert_stdout_eq_str` for more info.
+
+
 .. c:function:: cr_assert_str_eq(Actual, Reference)
 		cr_assert_str_neq(Actual, Reference)
 
@@ -146,9 +147,6 @@ Will pass if the string is empty (or is not empty is you used ``not_empty``).
 .. note::
 	There are also ``str_lt``, ``str_gt``, etc... macros that will check the lexicographical values of the two sting given, just like your ``my_strcmp`` would do (if you've done it well :D).
 
-.. WARNING::
-	Those functions won't allow you to compare the output of your progam with a given reference string. To do so you must use redirections. Check :c:func:`cr_assert_stdout_eq_str` for more info.
-
 Array asserts
 ~~~~~~~~~~~~~
 
@@ -157,15 +155,13 @@ Array asserts
 
 Compares each element of ``Actual`` with each of ``Expected``.
 
-.. WARNING::
-	Caution
+.. DANGER::
 	This assertion seems not to behave correctly. You should consider comparing each element of both arrays using a ``while`` loop.
 
 Redirections
 ~~~~~~~~~~~~
 
 .. WARNING::
-	Imports
 	To use the following assertions, you must include ``<criterion/redirect.h>`` along with ``<criterion/criterion.h>``.
 	``redirect.h`` allows Criterion to get the content of stdout and stderr and run asserts on it.
 

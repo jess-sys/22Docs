@@ -37,7 +37,7 @@ The ``suite_name`` must be the name of a set of tests, which will help you know 
 The ``test_name`` is here to help you know which precise test failed, and thus will be usefull to help you debug your code.
 
 .. DANGER::
-	If you want your tests to work, you must compile your code with Criterion's library using the ``-lCriterion`` flag. You should also consider running your code with the ``--verbose`` flag if you want a full summary of the test's results.
+	If you want your tests to work, you must compile your code with Criterion's library using the ``-lcriterion`` flag. You should also consider running your code with the ``--verbose`` flag if you want a full summary of the test's results.
 
 Asserts
 -------
@@ -117,7 +117,7 @@ Passes if and only if ``Actual`` is equal (or not equal, if you are using ``neq`
 .. c:function:: cr_assert_lt(Actual, Reference)
 		cr_assert_leq(Actual, Reference)
 
-Will pass if ``Actual`` is lesser than (or lesser than or equal if you used ``leq``) ``Reference``.
+Will pass if ``Actual`` is smaller than (or smaller than or equal if you used ``leq``) ``Reference``.
 
 .. c:function:: cr_assert_gt(Actual, Reference)
 		cr_assert_geq(Actual, Reference)

@@ -52,11 +52,3 @@ Let's see an example using Criterion's most basic assert, ``cr_assert``. This as
       }
 
 Here, as one plus one will always be equal to two, the test will always pass.
-Let's see the full list of Criterion's asserts.
-
-Basic asserts
-~~~~~~~~~~~~~
-
-.. c:macro:: cr_assert(Condition)
-
-Passes if ``condition`` is true.

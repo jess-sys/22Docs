@@ -12,9 +12,7 @@ Table of contents
 .. toctree::
    :maxdepth: 2
 
-   Technical Documentation
-   Criterion
-   CSFML
+   criterion
 
 Introduction
 ------------

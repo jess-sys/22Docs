@@ -79,7 +79,8 @@ Passes if ``condition`` is ``true``.
 
 Passes if ``condition`` is ``false``.
 
-.. c:function:: cr_assert_null(``condition``) c:function:: cr_assert_not_null(``condition``)
+.. c:function:: cr_assert_null(``condition``)
+ 		cr_assert_not_null(``condition``)
 
 Passes if ``condition`` is, or is not ``NULL``.
 
@@ -97,7 +98,8 @@ Passes if and only if ``Actual`` is not equal to ``Reference``.
 String asserts
 ~~~~~~~~~~~~~~
 
-.. c:function:: cr_assert_str_eq(Actual, Reference) c:function:: cr_assert_str_neq
+.. c:function:: cr_assert_str_eq(Actual, Reference)
+		cr_assert_str_neq(Actual, Reference)
 
 
 Just like :c:func:`cr_assert_eq`, but will check two strings, character by character.

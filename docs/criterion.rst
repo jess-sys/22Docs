@@ -14,7 +14,7 @@ Criterion is a unit-testing tool that will allow you to test your code efficient
 Introduction
 ------------
 
-Setup :
+Setup
 ~~~~~~~
 
 If you haven’t installed Criterion yet, please download install_criterion.sh from
@@ -22,6 +22,9 @@ the intranet, then run it. Criterion will be installed.
 
 What is criterion ?
 ~~~~~~~~~~~~~~~~~~~
+
+.. WARNING::
+   Do not forget to follow the Coding Style !
 
 Criterion lets you create a set of tests that will be executed on your code.
 Creating a test follows this pattern :

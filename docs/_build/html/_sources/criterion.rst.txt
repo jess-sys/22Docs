@@ -146,6 +146,12 @@ Will pass if the string is empty (or is not empty is you used ``not_empty``).
 
 .. note::
 	There are also ``str_lt``, ``str_gt``, etc... macros that will check the lexicographical values of the two sting given, just like your ``my_strcmp`` would do (if you've done it well :D).
+<<<<<<< HEAD
+=======
+
+.. WARNING::
+	Those functions won't allow you to compare the output of your progam with a given reference string. To do so you must use redirections. Check :c:func:`cr_assert_stdout_eq_str` for more info.
+>>>>>>> d6787e1166c0cd8717fe0a9c7c8c879c20f257bd
 
 Array asserts
 ~~~~~~~~~~~~~
@@ -174,6 +180,7 @@ Compares the content of ``stdout`` with ``Value``. This assertion behaves simila
 		cr_assert_stderr_neq_str(Value)
 
 Compares the content of ``stderr`` (a.k.a. "error output") with ``Value``.
+<<<<<<< HEAD
 
 Test options
 ------------
@@ -212,3 +219,5 @@ This parameter takes a function pointer to a function that will be executed afte
 It takes the same pointer type as the ``.init`` parameter.
 
 .. c:member:: .signal
+=======
+>>>>>>> d6787e1166c0cd8717fe0a9c7c8c879c20f257bd

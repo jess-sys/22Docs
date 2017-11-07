@@ -150,13 +150,13 @@ Will pass if the string is empty (or is not empty is you used ``not_empty``).
 Array asserts
 ~~~~~~~~~~~~~
 
-.. c:function:: cr_assert_arr_eq(Actual, Expected)
-		cr_assert_arr_neq(Actual, Expected)
+.. c:function:: cr_assert_arr_eq(Actual, Expected, Size)
+		cr_assert_arr_neq(Actual, Expected, Size)
 
 Compares each element of ``Actual`` with each of ``Expected``.
 
 .. DANGER::
-	This assertion seems not to behave correctly. You should consider comparing each element of both arrays using a ``while`` loop.
+	While not documented in criterion's official documentation, ``Size`` is mandatory, otherwise the test will be marked as fail.
 
 Redirections
 ~~~~~~~~~~~~
@@ -189,26 +189,110 @@ This parameter takes a function pointer as an argument. Criterion will execute t
 
 Note that the function pointer should be of type ``void (*)(void)``.
 
-.. note:: Sample usage
+Here is a sample usage of this parameter.
 
-	Here is a sample usage of this parameter.
+.. code-block:: c
 
-	.. code-block:: c
+	void my_func(void)
+	{
+		my_putstr("Here is the beginning of my test\n");
+	}
 
-		void my_func(void)
-		{
-			my_putstr("Here is the beginning of my test\n");
-		}
-
-		Test(suite_name, test_name, .init = my_func)
-		{
-			//tests
-		}
+	Test(suite_name, test_name, .init = my_func)
+	{
+		//tests
+	}
 
 .. c:member:: .fini
 
 This parameter takes a function pointer to a function that will be executed after the tests is finished.
 
-It takes the same pointer type as the ``.init`` parameter.
+It takes the same pointer type as the ``.init`` parameter, and also has the same usage.
 
 .. c:member:: .signal
+
+.. WARNING::
+	In order to use this parameter, you must include the header <signal.h>
+
+If a test receives a signal, it will by default be marked as a failure. However, you can expect a test to pass if a special kind of signal is received.
+
+.. code-block:: c
+
+	#include <stddef.h>
+	#include <signal.h>
+	#include <criterion/criterion.h>
+
+	Test(example, will_fail)
+	{
+		int *ptr = NULL;
+		*ptr = 42;
+	}
+
+	Test(example, will_pass, .signal = SIGSEGV)
+	{
+		int *ptr = NULL;
+		*ptr = 42;
+	}
+
+In the above example, the first test will fail while the second one will not.
+
+You can find a full list of handled signals by checking signal.h's documentation here : http://pubs.opengroup.org/onlinepubs/009695399/basedefs/signal.h.html.
+
+.. c:member:: .exit_code
+
+By default, Criterion will mark a test as failed if it exits with another exit code than 0.
+
+If you want to test your error handling, you can use the ``.exit_code`` parameter so the test will be marked as passed if the given exit code is found.
+
+Here is a sample usage of this parameter :
+
+.. code-block:: c
+
+	#include <unistd.h>
+
+	int error(void)
+	{
+		write(2, "error", 5);
+		exit(0);
+	}
+
+	Test(errors, exit_code, .exit_code = 84)
+	{
+		error();
+		cr_assert_stderr_eq("error", "");
+	}
+
+.. c:member:: .disabled
+
+If ``true``, the test will be skipped.
+
+.. c:member:: .description
+
+This parameter must be used in order to give extra definition of the test's purpose, which can be quite helpful if your suite_name and test_name aren't as explicit as you would like.
+
+.. c:member:: .timeout
+
+This parameter takes a ``double``, representing a duration. If your test takes longer than this duration to run, the test will be marked as failed.
+
+Suite configuration
+~~~~~~~~~~~~~~~~~~~
+
+If you want to set a test for all of a suite's members (for example, setting the exit code of all your error handling tests), you can, using the ``TestSuite`` macro.
+
+.. code-block:: c
+
+	#include <criterion/criterion.h>
+
+	TestSuite(suite_name, [params...]);
+
+	Test(suite_name, test_1)
+	{
+		//tests
+	}
+
+	Test(suite_name, test_2)
+	{
+		//other tests
+	}
+
+As you can see, you can set some params to all the tests with the same suite_name at once.

@@ -107,6 +107,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#test-options">Test options</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#options-reference">Options reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#suite-configuration">Suite configuration</a></li>
 </ul>
 </li>
 </ul>
@@ -335,27 +336,20 @@ If you want to compare arrays, please refer to <a class="reference internal" hre
 <p class="first admonition-title">Note</p>
 <p class="last">There are also <code class="docutils literal"><span class="pre">str_lt</span></code>, <code class="docutils literal"><span class="pre">str_gt</span></code>, etc… macros that will check the lexicographical values of the two sting given, just like your <code class="docutils literal"><span class="pre">my_strcmp</span></code> would do (if you’ve done it well :D).</p>
 </div>
-<<<<<<< HEAD
-=======
-<div class="admonition warning">
-<p class="first admonition-title">Warning</p>
-<p class="last">Those functions won’t allow you to compare the output of your progam with a given reference string. To do so you must use redirections. Check <a class="reference internal" href="#c.cr_assert_stdout_eq_str" title="cr_assert_stdout_eq_str"><code class="xref c c-func docutils literal"><span class="pre">cr_assert_stdout_eq_str()</span></code></a> for more info.</p>
-</div>
->>>>>>> d6787e1166c0cd8717fe0a9c7c8c879c20f257bd
 </div>
 <div class="section" id="array-asserts">
 <h3>Array asserts<a class="headerlink" href="#array-asserts" title="Permalink to this headline">¶</a></h3>
 <dl class="function">
 <dt id="c.cr_assert_arr_eq">
-<code class="descname">cr_assert_arr_eq</code><span class="sig-paren">(</span>Actual, Expected<span class="sig-paren">)</span><a class="headerlink" href="#c.cr_assert_arr_eq" title="Permalink to this definition">¶</a></dt>
+<code class="descname">cr_assert_arr_eq</code><span class="sig-paren">(</span>Actual, Expected, Size<span class="sig-paren">)</span><a class="headerlink" href="#c.cr_assert_arr_eq" title="Permalink to this definition">¶</a></dt>
 <dt id="c.cr_assert_arr_neq">
-<code class="descname">cr_assert_arr_neq</code><span class="sig-paren">(</span>Actual, Expected<span class="sig-paren">)</span><a class="headerlink" href="#c.cr_assert_arr_neq" title="Permalink to this definition">¶</a></dt>
+<code class="descname">cr_assert_arr_neq</code><span class="sig-paren">(</span>Actual, Expected, Size<span class="sig-paren">)</span><a class="headerlink" href="#c.cr_assert_arr_neq" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>Compares each element of <code class="docutils literal"><span class="pre">Actual</span></code> with each of <code class="docutils literal"><span class="pre">Expected</span></code>.</p>
 <div class="admonition danger">
 <p class="first admonition-title">Danger</p>
-<p class="last">This assertion seems not to behave correctly. You should consider comparing each element of both arrays using a <code class="docutils literal"><span class="pre">while</span></code> loop.</p>
+<p class="last">While not documented in criterion’s official documentation, <code class="docutils literal"><span class="pre">Size</span></code> is mandatory, otherwise the test will be marked as fail.</p>
 </div>
 </div>
 <div class="section" id="redirections">
@@ -381,7 +375,6 @@ If you want to compare arrays, please refer to <a class="reference internal" hre
 <dd></dd></dl>
 
 <p>Compares the content of <code class="docutils literal"><span class="pre">stderr</span></code> (a.k.a. “error output”) with <code class="docutils literal"><span class="pre">Value</span></code>.</p>
-<<<<<<< HEAD
 </div>
 </div>
 <div class="section" id="test-options">
@@ -396,20 +389,115 @@ If you want to compare arrays, please refer to <a class="reference internal" hre
 
 <p>This parameter takes a function pointer as an argument. Criterion will execute the function just before running the test.</p>
 <p>Note that the function pointer should be of type <code class="docutils literal"><span class="pre">void</span> <span class="pre">(*)(void)</span></code>.</p>
+<p>Here is a sample usage of this parameter.</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">my_func</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+        <span class="n">my_putstr</span><span class="p">(</span><span class="s">&quot;Here is the beginning of my test</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">Test</span><span class="p">(</span><span class="n">suite_name</span><span class="p">,</span> <span class="n">test_name</span><span class="p">,</span> <span class="p">.</span><span class="n">init</span> <span class="o">=</span> <span class="n">my_func</span><span class="p">)</span>
+<span class="p">{</span>
+        <span class="c1">//tests</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <dl class="member">
 <dt id="c..fini">
 <code class="descname">.fini</code><a class="headerlink" href="#c..fini" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <p>This parameter takes a function pointer to a function that will be executed after the tests is finished.</p>
-<p>It takes the same pointer type as the <code class="docutils literal"><span class="pre">.init</span></code> parameter.</p>
+<p>It takes the same pointer type as the <code class="docutils literal"><span class="pre">.init</span></code> parameter, and also has the same usage.</p>
 <dl class="member">
 <dt id="c..signal">
 <code class="descname">.signal</code><a class="headerlink" href="#c..signal" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-=======
->>>>>>> d6787e1166c0cd8717fe0a9c7c8c879c20f257bd
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">In order to use this parameter, you must include the header &lt;signal.h&gt;</p>
+</div>
+<p>If a test receives a signal, it will by default be marked as a failure. However, you can expect a test to pass if a special kind of signal is received.</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stddef.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;signal.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;criterion/criterion.h&gt;</span><span class="cp"></span>
+
+<span class="n">Test</span><span class="p">(</span><span class="n">example</span><span class="p">,</span> <span class="n">will_fail</span><span class="p">)</span>
+<span class="p">{</span>
+        <span class="kt">int</span> <span class="o">*</span><span class="n">ptr</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+        <span class="o">*</span><span class="n">ptr</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="n">Test</span><span class="p">(</span><span class="n">example</span><span class="p">,</span> <span class="n">will_pass</span><span class="p">,</span> <span class="p">.</span><span class="n">signal</span> <span class="o">=</span> <span class="n">SIGSEGV</span><span class="p">)</span>
+<span class="p">{</span>
+        <span class="kt">int</span> <span class="o">*</span><span class="n">ptr</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+        <span class="o">*</span><span class="n">ptr</span> <span class="o">=</span> <span class="mi">42</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>In the above example, the first test will fail while the second one will not.</p>
+<p>You can find a full list of handled signals by checking signal.h’s documentation here : <a class="reference external" href="http://pubs.opengroup.org/onlinepubs/009695399/basedefs/signal.h.html">http://pubs.opengroup.org/onlinepubs/009695399/basedefs/signal.h.html</a>.</p>
+<dl class="member">
+<dt id="c..exit_code">
+<code class="descname">.exit_code</code><a class="headerlink" href="#c..exit_code" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>By default, Criterion will mark a test as failed if it exits with another exit code than 0.</p>
+<p>If you want to test your error handling, you can use the <code class="docutils literal"><span class="pre">.exit_code</span></code> parameter so the test will be marked as passed if the given exit code is found.</p>
+<p>Here is a sample usage of this parameter :</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;unistd.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">error</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+        <span class="n">write</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s">&quot;error&quot;</span><span class="p">,</span> <span class="mi">5</span><span class="p">);</span>
+        <span class="n">exit</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="n">Test</span><span class="p">(</span><span class="n">errors</span><span class="p">,</span> <span class="n">exit_code</span><span class="p">,</span> <span class="p">.</span><span class="n">exit_code</span> <span class="o">=</span> <span class="mi">84</span><span class="p">)</span>
+<span class="p">{</span>
+        <span class="n">error</span><span class="p">();</span>
+        <span class="n">cr_assert_stderr_eq</span><span class="p">(</span><span class="s">&quot;error&quot;</span><span class="p">,</span> <span class="s">&quot;&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<dl class="member">
+<dt id="c..disabled">
+<code class="descname">.disabled</code><a class="headerlink" href="#c..disabled" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>If <code class="docutils literal"><span class="pre">true</span></code>, the test will be skipped.</p>
+<dl class="member">
+<dt id="c..description">
+<code class="descname">.description</code><a class="headerlink" href="#c..description" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>This parameter must be used in order to give extra definition of the test’s purpose, which can be quite helpful if your suite_name and test_name aren’t as explicit as you would like.</p>
+<dl class="member">
+<dt id="c..timeout">
+<code class="descname">.timeout</code><a class="headerlink" href="#c..timeout" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>This parameter takes a <code class="docutils literal"><span class="pre">double</span></code>, representing a duration. If your test takes longer than this duration to run, the test will be marked as failed.</p>
+</div>
+<div class="section" id="suite-configuration">
+<h3>Suite configuration<a class="headerlink" href="#suite-configuration" title="Permalink to this headline">¶</a></h3>
+<p>If you want to set a test for all of a suite’s members (for example, setting the exit code of all your error handling tests), you can, using the <code class="docutils literal"><span class="pre">TestSuite</span></code> macro.</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;criterion/criterion.h&gt;</span><span class="cp"></span>
+
+<span class="n">TestSuite</span><span class="p">(</span><span class="n">suite_name</span><span class="p">,</span> <span class="p">[</span><span class="n">params</span><span class="p">...]);</span>
+
+<span class="n">Test</span><span class="p">(</span><span class="n">suite_name</span><span class="p">,</span> <span class="n">test_1</span><span class="p">)</span>
+<span class="p">{</span>
+        <span class="c1">//tests</span>
+<span class="p">}</span>
+
+<span class="n">Test</span><span class="p">(</span><span class="n">suite_name</span><span class="p">,</span> <span class="n">test_2</span><span class="p">)</span>
+<span class="p">{</span>
+        <span class="c1">//other tests</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>As you can see, you can set some params to all the tests with the same suite_name at once.</p>
 </div>
 </div>
 </div>

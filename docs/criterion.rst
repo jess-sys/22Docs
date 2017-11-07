@@ -189,10 +189,10 @@ This parameter takes a function pointer as an argument. Criterion will execute t
 
 Note that the function pointer should be of type ``void (*)(void)``.
 
-.. rubric:: Sample usage
+.. note:: Sample usage
 
 	Here is a sample usage of this parameter.
-	
+
 	.. code-block:: c
 
 		void my_func(void)

@@ -58,10 +58,13 @@ Basic asserts
 ~~~~~~~~~~~~~
 
 .. c:macro:: cr_assert(``condition``)
+
 Passes if ``condition`` is ``true``.
 
 .. c:macro:: cr_assert_not(``condition``)
+
 Passes if ``condition`` is ``false``.
 
 .. c:macro:: cr_assert_null(``condition``)
+
 Passes if ``condition`` is ``NULL``.

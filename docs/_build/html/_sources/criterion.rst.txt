@@ -57,17 +57,14 @@ Let's see the full list of Criterion's asserts.
 Basic asserts
 ~~~~~~~~~~~~~
 
-<<<<<<< HEAD
 .. c:macro:: cr_assert(``condition``)
+
 Passes if ``condition`` is ``true``.
 
 .. c:macro:: cr_assert_not(``condition``)
+
 Passes if ``condition`` is ``false``.
 
 .. c:macro:: cr_assert_null(``condition``)
-Passes if ``condition`` is ``NULL``.
-=======
-.. c:macro:: cr_assert(Condition)
 
-Passes if ``condition`` is true.
->>>>>>> 78f7512b413c3e56816d116570ff135ff9e32af7
+Passes if ``condition`` is ``NULL``.

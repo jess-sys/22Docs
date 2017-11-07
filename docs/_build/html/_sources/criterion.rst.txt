@@ -6,9 +6,6 @@
 Criterion
 ============
 
-.. toctree::
-   :maxdepth: 2
-
 Criterion is a unit-testing tool that will allow you to test your code efficiently.
 
 Introduction
@@ -17,10 +14,10 @@ Introduction
 Setup
 ~~~~~~~
 
-If you haven’t installed Criterion yet, please download install_criterion.sh from
+If you haven’t installed Criterion yet, please download install_Criterion.sh from
 the intranet, then run it. Criterion will be installed.
 
-What is criterion ?
+What is Criterion ?
 ~~~~~~~~~~~~~~~~~~~
 
 .. WARNING::
@@ -40,7 +37,7 @@ The ``suite_name`` must be the name of a set of tests, which will help you know 
 The ``test_name`` is here to help you know which precise test failed, and thus will be usefull to help you debug your code.
 
 .. DANGER::
-	If you want your tests to work, you must compile your code with criterion's library using the ``-lcriterion`` flag. You should also consider running your code with the ``--verbose`` flag if you want a full summary of the test's results.
+	If you want your tests to work, you must compile your code with Criterion's library using the ``-lcriterion`` flag. You should also consider running your code with the ``--verbose`` flag if you want a full summary of the test's results.
 
 Asserts
 -------
@@ -61,7 +58,7 @@ Let's see the full list of Criterion's asserts.
 	All asserts are located in the header ``<criterion/criterion.h>``. Don't forget to include this header in order to make your tests functionnal.
 
 .. note::
-	Most asserts here have the ``assert`` keyword in their name. You should be aware that using those macros will stop the whole test right away if they fail. If you want to run some code after the test, even if it fail, you should really consider changing ``assert`` with ``expect``. For example, in the followinf code the printf function will not be executed :
+	Most asserts here have the ``assert`` keyword in their name. You should be aware that using those macros will stop the whole test right away if they fail. If you want to run some code after the test, even if it fail, you should really consider changing ``assert`` with ``expect``. For example, in the following code the printf function will not be executed :
 
 	.. code-block:: c
 
@@ -70,7 +67,7 @@ Let's see the full list of Criterion's asserts.
 			printf("I wanted to run this code :/");
 		}
 
-	But in this example it will run :
+	But in this example it will still run :
 
 	.. code-block:: c
 
@@ -107,34 +104,39 @@ Passes if ``condition`` is ``false``.
 .. c:function:: cr_assert_null(``condition``)
  		cr_assert_not_null(``condition``)
 
-Passes if ``condition`` is, or is not ``NULL``.
+Passes if ``condition`` is ``NULL``, or is not ``NULL``.
 
 Common asserts
 ~~~~~~~~~~~~~~
 
 .. c:function:: cr_assert_eq(Actual, Reference)
+		cr_assert_neq(Actual, Reference)
 
-Passes if and only if ``Actual`` is equal to ``Reference``.
+Passes if and only if ``Actual`` is equal (or not equal, if you are using ``neq``) to ``Reference``.
 
-.. c:function:: cr_assert_neq(Actual, Reference)
+.. c:function:: cr_assert_lt(Actual, Reference)
+		cr_assert_leq(Actual, Reference)
 
-Passes if and only if ``Actual`` is not equal to ``Reference``.
+Will pass if ``Actual`` is smaller than (or smaller than or equal if you used ``leq``) ``Reference``.
+
+.. c:function:: cr_assert_gt(Actual, Reference)
+		cr_assert_geq(Actual, Reference)
+
+Will pass if ``Actual`` is greater than (or greater than or equal if you used ``geq``) ``Reference``.
 
 String asserts
 ~~~~~~~~~~~~~~
 
 .. c:function:: cr_assert_str_eq(Actual, Reference)
 		cr_assert_str_neq(Actual, Reference)
-<<<<<<< HEAD
 
 
 Just like :c:func:`cr_assert_eq`, but will check two strings, character by character.
 
-.. c:function:
-=======
+.. c:function:: cr_assert_empty(Value)
+		cr_assert_not_empty(Value)
 
+Will pass if the string is empty (or is not empty is you used ``not_empty``).
 
-Just like :c:func:`cr_assert_eq`, but will check two strings, character by character.
-
-.. c:function:: cr_assert_str_neq
->>>>>>> 03093ff7ebe06a085063dec6b9e063aa6f2edeb4
+.. note::
+	There are also ``str_lt``, ``str_gt``, etc... macros that will check the lexicographical values of the two sting given, just like your ``my_strcmp`` would do (if you've done it well :D).

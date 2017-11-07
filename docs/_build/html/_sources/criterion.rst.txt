@@ -57,7 +57,6 @@ Let's see the full list of Criterion's asserts.
 Basic asserts
 ~~~~~~~~~~~~~
 
-<<<<<<< HEAD
 .. note::
 	Additional parameters
 	In addition to the condition tested by the following tests, it is possible to give a string as parameter which will be printed to stderr if the test fails.
@@ -72,8 +71,6 @@ Basic asserts
 			cr_assert("i * 2 == j", "The result was %d. Expected %d", i * 2, j);
 		}
 
-=======
->>>>>>> 12226af76f0e17ec476c33dfa12d816e09fc55bd
 .. c:macro:: cr_assert(``condition``)
 
 Passes if ``condition`` is ``true``.
@@ -83,14 +80,9 @@ Passes if ``condition`` is ``true``.
 Passes if ``condition`` is ``false``.
 
 .. c:macro:: cr_assert_null(``condition``)
-<<<<<<< HEAD
-
-Passes if ``condition`` is ``NULL``.
-
 .. c:macro:: cr_assert_not_null(``condition``)
 
-Passes if ``condition`` is not ``NULL``
-
+Passes if ``condition`` is, or is not ``NULL``.
 
 Common asserts
 ~~~~~~~~~~~~~~
@@ -108,8 +100,6 @@ String asserts
 
 .. c:macro:: cr_assert_str_eq(Actual, Reference)
 
-Passes if and only if the ``Actual`` string is lexicographically equal to ``Expected``.
-=======
+Just like :macro:`cr_assert_eq`, but will check two strings, character by character.
 
-Passes if ``condition`` is ``NULL``.
->>>>>>> 12226af76f0e17ec476c33dfa12d816e09fc55bd
+.. c:macro:: cr_assert_str_neq

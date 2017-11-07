@@ -80,13 +80,9 @@ Passes if ``condition`` is ``true``.
 Passes if ``condition`` is ``false``.
 
 .. c:macro:: cr_assert_null(``condition``)
-
-Passes if ``condition`` is ``NULL``.
-
 .. c:macro:: cr_assert_not_null(``condition``)
 
-Passes if ``condition`` is not ``NULL``
-
+Passes if ``condition`` is, or is not ``NULL``.
 
 Common asserts
 ~~~~~~~~~~~~~~
@@ -104,4 +100,6 @@ String asserts
 
 .. c:macro:: cr_assert_str_eq(Actual, Reference)
 
-Passes if and only if the ``Actual`` string is lexicographically equal to ``Expected``.
+Just like :macro:`cr_assert_eq`, but will check two strings, character by character.
+
+.. c:macro:: cr_assert_str_neq

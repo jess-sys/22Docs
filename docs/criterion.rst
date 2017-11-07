@@ -109,6 +109,11 @@ Passes if ``condition`` is, or is not ``NULL``.
 Common asserts
 ~~~~~~~~~~~~~~
 
+.. note::
+	Please note that the following asserts only work for non-array comparison.
+	If you want to compare array, please refer to :c:func:`cr_assert_str_eq` or :c:func:`cr_assert_arr_eq`.
+
+
 .. c:function:: cr_assert_eq(Actual, Reference)
 		cr_assert_neq(Actual, Reference)
 
@@ -117,7 +122,7 @@ Passes if and only if ``Actual`` is equal (or not equal, if you are using ``neq`
 .. c:function:: cr_assert_lt(Actual, Reference)
 		cr_assert_leq(Actual, Reference)
 
-Will pass if ``Actual`` is lesser than (or lesser than or equal if you used ``leq``) ``Reference``.
+Will pass if ``Actual`` is less than (or less than or equal if you used ``leq``) ``Reference``.
 
 .. c:function:: cr_assert_gt(Actual, Reference)
 		cr_assert_geq(Actual, Reference)
@@ -140,3 +145,36 @@ Will pass if the string is empty (or is not empty is you used ``not_empty``).
 
 .. note::
 	There are also ``str_lt``, ``str_gt``, etc... macros that will check the lexicographical values of the two sting given, just like your ``my_strcmp`` would do (if you've done it well :D).
+
+.. WARNING::
+	Those functions won't allow you to compare the output of your progam with a given reference string. To do so you must use redirections. Check :c:func:`cr_assert_stdout_eq_str` for more info.
+
+Array asserts
+~~~~~~~~~~~~~
+
+.. c:function:: cr_assert_arr_eq(Actual, Expected)
+		cr_assert_arr_neq(Actual, Expected)
+
+Compares each element of ``Actual`` with each of ``Expected``.
+
+.. WARNING::
+	Caution
+	This assertion seems not to behave correctly. You should consider comparing each element of both arrays using a ``while`` loop.
+
+Redirections
+~~~~~~~~~~~~
+
+.. WARNING::
+	Imports
+	To use the following assertions, you must include ``<criterion/redirect.h>`` along with ``<criterion/criterion.h>``.
+	``redirect.h`` allows Criterion to get the content of stdout and stderr and run asserts on it.
+
+.. c:function:: cr_assert_stdout_eq_str(Value)
+		cr_assert_stdout_neq_str(Value)
+
+Compares the content of ``stdout`` with ``Value``. This assertion behaves similarly to :c:func:`cr_assert_str_eq`.
+
+.. c:function:: cr_assert_stderr_eq_str(Value)
+		cr_assert_stderr_neq_str(Value)
+
+Compares the content of ``stderr`` (a.k.a. "error output") with ``Value``.

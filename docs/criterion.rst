@@ -12,7 +12,7 @@ Introduction
 ------------
 
 Setup
-~~~~~~~
+~~~~~
 
 If you haven’t installed Criterion yet, please download install_Criterion.sh from
 the intranet, then run it. Criterion will be installed.
@@ -37,7 +37,7 @@ The ``suite_name`` must be the name of a set of tests, which will help you know 
 The ``test_name`` is here to help you know which precise test failed, and thus will be usefull to help you debug your code.
 
 .. DANGER::
-	If you want your tests to work, you must compile your code with Criterion's library using the ``-lCriterion`` flag. You should also consider running your code with the ``--verbose`` flag if you want a full summary of the test's results.
+	If you want your tests to work, you must compile your code with Criterion's library using the ``-lcriterion`` flag. You should also consider running your code with the ``--verbose`` flag if you want a full summary of the test's results.
 
 Asserts
 -------
@@ -104,7 +104,7 @@ Passes if ``condition`` is ``false``.
 .. c:function:: cr_assert_null(``condition``)
  		cr_assert_not_null(``condition``)
 
-Passes if ``condition`` is, or is not ``NULL``.
+Passes if ``condition`` is ``NULL``, or is not ``NULL``.
 
 Common asserts
 ~~~~~~~~~~~~~~

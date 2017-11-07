@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 CSFML : Graphical Programming
-============================
+=============================
 
 Table of contents
 -----------------

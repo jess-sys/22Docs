@@ -37,7 +37,11 @@ The ``suite_name`` must be the name of a set of tests, which will help you know 
 The ``test_name`` is here to help you know which precise test failed, and thus will be usefull to help you debug your code.
 
 .. DANGER::
+<<<<<<< HEAD
 	If you want your tests to work, you must compile your code with Criterion's library using the ``-lCriterion`` flag. You should also consider running your code with the ``--verbose`` flag if you want a full summary of the test's results.
+=======
+	If you want your tests to work, you must compile your code with Criterion's library using the ``-lcriterion`` flag. You should also consider running your code with the ``--verbose`` flag if you want a full summary of the test's results.
+>>>>>>> 1c0c24a5c2d508b14c853e8c210f72c58a5ff987
 
 Asserts
 -------
@@ -104,7 +108,7 @@ Passes if ``condition`` is ``false``.
 .. c:function:: cr_assert_null(``condition``)
  		cr_assert_not_null(``condition``)
 
-Passes if ``condition`` is, or is not ``NULL``.
+Passes if ``condition`` is ``NULL``, or is not ``NULL``.
 
 Common asserts
 ~~~~~~~~~~~~~~
@@ -122,7 +126,11 @@ Passes if and only if ``Actual`` is equal (or not equal, if you are using ``neq`
 .. c:function:: cr_assert_lt(Actual, Reference)
 		cr_assert_leq(Actual, Reference)
 
+<<<<<<< HEAD
 Will pass if ``Actual`` is less than (or less than or equal if you used ``leq``) ``Reference``.
+=======
+Will pass if ``Actual`` is lesser than (or lesser than or equal if you used ``leq``) ``Reference``.
+>>>>>>> 1c0c24a5c2d508b14c853e8c210f72c58a5ff987
 
 .. c:function:: cr_assert_gt(Actual, Reference)
 		cr_assert_geq(Actual, Reference)
@@ -145,6 +153,7 @@ Will pass if the string is empty (or is not empty is you used ``not_empty``).
 
 .. note::
 	There are also ``str_lt``, ``str_gt``, etc... macros that will check the lexicographical values of the two sting given, just like your ``my_strcmp`` would do (if you've done it well :D).
+<<<<<<< HEAD
 
 .. WARNING::
 	Those functions won't allow you to compare the output of your progam with a given reference string. To do so you must use redirections. Check :c:func:`cr_assert_stdout_eq_str` for more info.
@@ -178,3 +187,5 @@ Compares the content of ``stdout`` with ``Value``. This assertion behaves simila
 		cr_assert_stderr_neq_str(Value)
 
 Compares the content of ``stderr`` (a.k.a. "error output") with ``Value``.
+=======
+>>>>>>> 1c0c24a5c2d508b14c853e8c210f72c58a5ff987

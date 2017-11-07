@@ -1,6 +1,5 @@
 
 
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -9,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Index &mdash; EPITECH 2022 - Technical Documentation 1.3.37 documentation</title>
+  <title>Criterion &mdash; EPITECH 2022 - Technical Documentation 1.3.37 documentation</title>
   
 
   
@@ -34,7 +33,7 @@
 
   
         <link rel="index" title="Index"
-              href="#"/>
+              href="genindex.html"/>
         <link rel="search" title="Search" href="search.html"/>
     <link rel="top" title="EPITECH 2022 - Technical Documentation 1.3.37 documentation" href="index.html"/> 
 
@@ -89,10 +88,19 @@
               
             
             
-              <ul>
-<li class="toctree-l1"><a class="reference internal" href="criterion.html">Criterion</a></li>
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Criterion</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a><ul>
+<li><a class="reference internal" href="#setup">Setup :</a></li>
+<li><a class="reference internal" href="#what-is-criterion">What is criterion ?</a></li>
 </ul>
-
+</li>
+<li><a class="reference internal" href="#asserts">Asserts</a></li>
+</ul>
+</li>
+</ul>
+</div>
             
           
         </div>
@@ -135,12 +143,14 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Index</li>
+      <li>Criterion</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
+            <a href="_sources/criterion.rst.txt" rel="nofollow"> View page source</a>
+          
         
       </li>
     
@@ -152,11 +162,43 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
+  <div class="section" id="criterion">
+<h1>Criterion<a class="headerlink" href="#criterion" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<p>Criterion is a unit-testing tool that will allow you to test your code efficiently.</p>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="setup">
+<h3>Setup :<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h3>
+<p>If you haven’t installed Criterion yet, please download install_criterion.sh from
+the intranet, then run it. Criterion will be installed.</p>
+</div>
+<div class="section" id="what-is-criterion">
+<h3>What is criterion ?<a class="headerlink" href="#what-is-criterion" title="Permalink to this headline">¶</a></h3>
+<p>Criterion lets you create a set of tests that will be executed on your code.
+Creating a test follows this pattern :</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">Test</span><span class="p">(</span><span class="n">suite_name</span><span class="p">,</span> <span class="n">test_name</span><span class="p">,</span> <span class="p">...)</span>
+<span class="p">{</span>
+          <span class="c1">//tests</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal"><span class="pre">suite_name</span></code> must be the name of a set of tests, which will help you know exactly what part of your code fails.
+The <code class="docutils literal"><span class="pre">test_name</span></code> is here to help you know which precise test failed, and thus will be usefull to help you debug your code.</p>
+</div>
+</div>
+<div class="section" id="asserts">
+<h2>Asserts<a class="headerlink" href="#asserts" title="Permalink to this headline">¶</a></h2>
+<p>Asserts are Criterion’s way of defining tests to run. You will have to define several assets in order to test every bit of your code.
+Let’s see an example using Criterion’s most basic assert, <code class="docutils literal"><span class="pre">cr_assert</span></code>. This asserts takes a condition as a parameter, and the test passes if the condition is true :</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="n">Test</span><span class="p">(</span><span class="n">basics</span><span class="p">,</span> <span class="n">first_test</span><span class="p">)</span> <span class="p">{</span>
+          <span class="n">cr_assert</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">==</span> <span class="mi">2</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Here, as one plus one will always be equal to two, the test will always pass.</p>
+</div>
 </div>
 
 

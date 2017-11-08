@@ -6,6 +6,10 @@
 Technical Documentation
 =======================
 
+.. sidebar:: Qui se fait péter les dents ?
+
+   C'est la croisade d'argent !
+
 Table of contents
 -----------------
 

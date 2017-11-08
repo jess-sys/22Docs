@@ -14,6 +14,7 @@ commands and rules in the Makefile.
 
 .. admonition:: Pro-tip
    :class: caution
+
    Remember the first two days of C Pool. You were supposed to use bash and
    build your own aliases and scripts. ``Make`` is kind of a custom build 
    script that makes your programmer-life really easier.

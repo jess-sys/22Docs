@@ -13,7 +13,7 @@ A Makefile is a file, read by the ``Make`` program, which executes all the
 commands and rules in the Makefile.
 
 .. admonition:: Pro-tip
-   :class: caution
+   :class: hint
 
    Remember the first two days of C Pool. You were supposed to use bash and
    build your own aliases and scripts. ``Make`` is kind of a custom build 

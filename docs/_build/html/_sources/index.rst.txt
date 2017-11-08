@@ -6,8 +6,7 @@
 Technical Documentation
 =======================
 
-.. caution:: Documentation not complete
-
+.. caution:: 
    We are currently writing this documentation. It may be incomplete,
    imprecise, use it at your own risk.
 

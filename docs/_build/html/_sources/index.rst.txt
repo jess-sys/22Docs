@@ -6,9 +6,10 @@
 Technical Documentation
 =======================
 
-.. sidebar:: Qui se fait péter les dents ?
+.. caution:: Documentation not complete
 
-   C'est la croisade d'argent !
+   We are currently writing this documentation. It may be incomplete,
+   imprecise, use it at your own risk.
 
 Table of contents
 -----------------

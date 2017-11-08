@@ -170,6 +170,11 @@ Redirections
 
 Compares the content of ``stdout`` with ``Value``. This assertion behaves similarly to :c:func:`cr_assert_str_eq`.
 
+.. c:function:: cr_assert_stderr_eq_str(Value)
+		cr_assert_stderr_neq_str(Value)
+
+Compares the content of ``stderr`` (a.k.a. "error output") with ``Value``.
+
 Here is a sample usage of this assert.
 
 .. code-block:: c
@@ -186,11 +191,6 @@ Here is a sample usage of this assert.
 		cr_assert_stderr_eq("error", "");
 	}
 
-
-.. c:function:: cr_assert_stderr_eq_str(Value)
-		cr_assert_stderr_neq_str(Value)
-
-Compares the content of ``stderr`` (a.k.a. "error output") with ``Value``.
 
 Test options
 ------------
@@ -313,3 +313,8 @@ If you want to set a test for all of a suite's members (for example, setting the
 	}
 
 As you can see, you can set some params to all the tests with the same suite_name at once.
+
+
+.. c:type:: int
+
+This is an awesome type.

@@ -368,6 +368,14 @@ If you want to compare arrays, please refer to <a class="reference internal" hre
 <dd></dd></dl>
 
 <p>Compares the content of <code class="docutils literal"><span class="pre">stdout</span></code> with <code class="docutils literal"><span class="pre">Value</span></code>. This assertion behaves similarly to <a class="reference internal" href="#c.cr_assert_str_eq" title="cr_assert_str_eq"><code class="xref c c-func docutils literal"><span class="pre">cr_assert_str_eq()</span></code></a>.</p>
+<dl class="function">
+<dt id="c.cr_assert_stderr_eq_str">
+<code class="descname">cr_assert_stderr_eq_str</code><span class="sig-paren">(</span>Value<span class="sig-paren">)</span><a class="headerlink" href="#c.cr_assert_stderr_eq_str" title="Permalink to this definition">¶</a></dt>
+<dt id="c.cr_assert_stderr_neq_str">
+<code class="descname">cr_assert_stderr_neq_str</code><span class="sig-paren">(</span>Value<span class="sig-paren">)</span><a class="headerlink" href="#c.cr_assert_stderr_neq_str" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>Compares the content of <code class="docutils literal"><span class="pre">stderr</span></code> (a.k.a. “error output”) with <code class="docutils literal"><span class="pre">Value</span></code>.</p>
 <p>Here is a sample usage of this assert.</p>
 <div class="highlight-c"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">error</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
@@ -382,14 +390,6 @@ If you want to compare arrays, please refer to <a class="reference internal" hre
 <span class="p">}</span>
 </pre></div>
 </div>
-<dl class="function">
-<dt id="c.cr_assert_stderr_eq_str">
-<code class="descname">cr_assert_stderr_eq_str</code><span class="sig-paren">(</span>Value<span class="sig-paren">)</span><a class="headerlink" href="#c.cr_assert_stderr_eq_str" title="Permalink to this definition">¶</a></dt>
-<dt id="c.cr_assert_stderr_neq_str">
-<code class="descname">cr_assert_stderr_neq_str</code><span class="sig-paren">(</span>Value<span class="sig-paren">)</span><a class="headerlink" href="#c.cr_assert_stderr_neq_str" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<p>Compares the content of <code class="docutils literal"><span class="pre">stderr</span></code> (a.k.a. “error output”) with <code class="docutils literal"><span class="pre">Value</span></code>.</p>
 </div>
 </div>
 <div class="section" id="test-options">
@@ -513,6 +513,12 @@ If you want to compare arrays, please refer to <a class="reference internal" hre
 </pre></div>
 </div>
 <p>As you can see, you can set some params to all the tests with the same suite_name at once.</p>
+<dl class="type">
+<dt id="c.int">
+<code class="descname">int</code><a class="headerlink" href="#c.int" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<p>This is an awesome type.</p>
 </div>
 </div>
 </div>

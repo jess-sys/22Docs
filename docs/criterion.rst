@@ -312,9 +312,5 @@ If you want to set a test for all of a suite's members (for example, setting the
 		//other tests
 	}
 
-As you can see, you can set some params to all the tests with the same suite_name at once.
-
-
-.. c:type:: int
-
-This is an awesome type.
+As you can see, you can set some params to all the tests with the same
+suite_name at once.

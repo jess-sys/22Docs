@@ -46,7 +46,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'EPITECH 2022 - Technical Documentation'
-copyright = u'2017, Maxime CORBIN, Jules CASTÉRAN, Jessy SOBREIRO'
+copyright = u'Qui sème le chaos ? Le Fléau ! (Fléorde: Maxime CORBIN, Jules CASTÉRAN, Jessy SOBREIRO)'
 author = u'Maxime CORBIN, Jules CASTÉRAN, Jessy SOBREIRO'
 
 # The version info for the project you're documenting, acts as replacement for

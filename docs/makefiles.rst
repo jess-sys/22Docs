@@ -17,11 +17,6 @@ commands and rules in the Makefile.
    build your own aliases and scripts. ``Make`` is kind of a custom build 
    script that makes your programmer-life really easier.
 
-.. sidebar:: This is awesome !
-   Maxime is even more awesome !
-
-   This is some text, don't pay attention to it.
-
 At EPITECH, you'll be using Makefiles to compile your code, using a
 ``compiler``.
 

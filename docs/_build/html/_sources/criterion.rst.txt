@@ -156,7 +156,7 @@ Array asserts
 Compares each element of ``Actual`` with each of ``Expected``.
 
 .. DANGER::
-	While not documented in criterion's official documentation, ``Size`` is mandatory, otherwise the test will be marked as fail.
+	While not documented in Criterion's official documentation, ``Size`` is mandatory, otherwise the test will be marked as failed.
 
 Redirections
 ~~~~~~~~~~~~

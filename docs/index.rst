@@ -12,8 +12,9 @@ Table of contents
 .. toctree::
    :maxdepth: 2
 
-   criterion
    basics
+   makefiles
+   criterion
    csfml
 
 Introduction

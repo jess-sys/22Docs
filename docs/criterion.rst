@@ -311,9 +311,5 @@ If you want to set a test for all of a suite's members (for example, setting the
 		//other tests
 	}
 
-<<<<<<< HEAD
-As you can see, you can set some params to all the tests with the same suite_name at once.
-=======
 As you can see, you can set some params to all the tests with the same
 suite_name at once.
->>>>>>> bcbc0af5f2cf0080a711127764660408457d1f4b

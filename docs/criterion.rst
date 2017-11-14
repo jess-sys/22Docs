@@ -163,7 +163,8 @@ Redirections
 
 .. WARNING::
 	To use the following assertions, you must include ``<criterion/redirect.h>`` along with ``<criterion/criterion.h>``.
-	``redirect.h`` allows Criterion to get the content of stdout and stderr and run asserts on it.
+	``redirect.h`` allows Criterion to get the content of stdout and stderr and run asserts on it. You also need to create a function that
+        calls the ``cr_redirect_stdout()`` function.
 
 .. c:function:: cr_assert_stdout_eq_str(Value)
 		cr_assert_stdout_neq_str(Value)
@@ -179,17 +180,22 @@ Here is a sample usage of this assert.
 
 .. code-block:: c
 
-	int error(void)
-	{
-		write(2, "error", 5);
-		exit(0);
-	}
+        void redirect_all_stdout(void)
+        {
+                cr_redirect_stdout();
+        }
+        
+        int error(void)
+        {
+                write(2, "error", 5);
+                exit(0);
+        }
 
-	Test(errors, exit_code)
-	{
-		error();
-		cr_assert_stderr_eq("error", "");
-	}
+        Test(errors, exit_code, .init=redirect_all_stdout())
+        {
+                error();
+                cr_assert_stderr_eq("error", "");
+        }
 
 
 Test options

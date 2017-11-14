@@ -19,14 +19,12 @@ commands and rules in the Makefile.
    build your own aliases and scripts. ``Make`` is kind of a custom build
    script that makes your programmer-life really easier.
 
-At EPITECH, you'll be using Makefiles to compile your code, using a
-``compiler``.
+At EPITECH, you'll be using Makefiles to compile your code, using a ``compiler``.
 
 Generic Makefile
 ----------------
 
-A simple Makefile is composed of your project source files (the .c files) and some
-``rules`` to make your ``Make`` command work.
+A simple Makefile is composed of your project source files (the .c files) and some ``rules`` to make your ``Make`` command work.
 
 You have to list your source files like this:
 
@@ -40,7 +38,7 @@ files in ``$(SRC)`` and compile them into ``.o`` files.
 
 .. code-block:: none
 
-   OBJ = $(SRC=.c=.o)
+   OBJ = $(SRC:.c=.o)
 
 Now, set the name of your final binary using ``NAME``, so the AutoGrader can
 find your binary correctly.
@@ -75,8 +73,7 @@ You can also have some rules that permit you to clean-up your folder without
 having to do it manually.
 
 For instance, this ``clean`` will remove ``.o`` files.
-Also, ``fclean`` will remove ``.o`` files and the binary.
-``re`` will do ``fclean`` and re-make your binary.
+Also, ``fclean`` will remove ``.o`` files and the binary. ``re`` will do ``fclean`` and re-make your binary.
 
 .. code-block:: none
 
@@ -94,7 +91,7 @@ Don't forget to put a ``.PHONY``, in order to avoid relinking. Put all the rules
 
     .PHONY: all clean fclean re
 
-And that's pretty much it ! Your Makefile is ready to use.
+And that's pretty much it ! Your Makefile is now ready to use.
 
 Criterion Makefile
 ------------------

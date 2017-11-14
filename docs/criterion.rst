@@ -77,7 +77,6 @@ Basic asserts
 ~~~~~~~~~~~~~
 
 .. note::
-	Additional parameters
 	In addition to the condition tested by the following tests, it is possible to give a string as parameter which will be printed to stderr if the test fails.
 	This optionnal string can take printf-like arguments.
 	For example, you can do something like:
@@ -144,7 +143,7 @@ Just like :c:func:`cr_assert_eq`, but will check two strings, character by chara
 
 Will pass if the string is empty (or is not empty is you used ``not_empty``).
 
-.. note::
+.. hint::
 	There are also ``str_lt``, ``str_gt``, etc... macros that will check the lexicographical values of the two sting given, just like your ``my_strcmp`` would do (if you've done it well :D).
 
 Array asserts
@@ -155,13 +154,13 @@ Array asserts
 
 Compares each element of ``Actual`` with each of ``Expected``.
 
-.. DANGER::
+.. caution::
 	While not documented in Criterion's official documentation, ``Size`` is mandatory, otherwise the test will be marked as failed.
 
 Redirections
 ~~~~~~~~~~~~
 
-.. WARNING::
+.. tip::
 	To use the following assertions, you must include ``<criterion/redirect.h>`` along with ``<criterion/criterion.h>``.
 	``redirect.h`` allows Criterion to get the content of stdout and stderr and run asserts on it. You also need to create a function that
         calls the ``cr_redirect_stdout()`` function.

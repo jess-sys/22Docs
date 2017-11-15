@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 Windows Activation
-========
+==================
 
 The magic command
 -----------------
@@ -14,6 +14,8 @@ For this, you need to be on the IONIS Wireless Network
 Just press Windows + X, choose "Windows PowerShell (Admin)"
 In it, copy paste this command:
 
-slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX
+.. code-block:: none
 
-And reboot. Your done!
+   slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX
+
+And reboot. You're done!

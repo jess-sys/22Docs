@@ -20,6 +20,7 @@ Table of contents
    makefiles
    criterion
    csfml
+   winactivation
 
 Introduction
 ------------

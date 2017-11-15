@@ -42,3 +42,5 @@ e-mail:
 - Maxime CORBIN (maxime.corbin@epitech.eu), author, main contributor.
 
 - Jules CASTÉRAN (jules.casteran@epitech.eu), author.
+
+- Corentin RONDIER (corentin.rondier@epitech.eu), for Windows Activation

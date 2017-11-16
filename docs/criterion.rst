@@ -191,7 +191,7 @@ Here is a sample usage of this assert.
                 exit(0);
         }
 
-        Test(errors, exit_code, .init=redirect_all_stdout())
+        Test(errors, exit_code, .init=redirect_all_stdout)
         {
                 error();
                 cr_assert_stderr_eq("error", "");

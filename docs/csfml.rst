@@ -151,6 +151,35 @@ This function allows you to set your program's framerate.
 
 		:limit: ``unsigned int`` - Defines the maximum number of frames your program should display each second.
 
+.. c:function:: void sfRenderWindow_setKeyRepeatEnabled(sfRenderWindow *window, sfBool enabled)
+
+This function enables or disables automatic key-repeat for keydown events. If enabled, a key pressed down will create new :c:type:`sfEvent` objects all time until it is released.
+
+	**Parameters**
+
+		:window: :c:type:`sfRenderWindow` - Target render window.
+
+		:enabled: :c:type:`sfBool` - ``sfTrue`` to enable, ``sfFalse`` to disable.
+
+.. c:function:: void sfRenderWindow_setMouseCursorGrabbed(sfRenderWindow *window, sfBool grabbed)
+
+This function allows you to grab or release the mouse cursor. If the cursor is grabbed, it may no longer be moved outside the window's bounds. Note that this function is only useful while the window has focus and if it is not in fullscreen mode (fullscreen windows always grab the cursor).
+
+	**Parameters**
+
+		:window: :c:type:`sfRenderWindow` - Target render window.
+
+		:grabbed: :c:type:`sfBool` - ``sfTrue`` to enable, ``sfFalse`` to disable.
+
+.. c:function:: void sfRenderWindow_setMouseCursorVisible(sfRenderWindow *window, sfBool show)
+
+This function allows you to hide the mouse cursor on a render window.
+
+	**Parameters**
+		:window: :c:type:`sfRenderWindow` - Target render window.
+
+		:show: :c:type:`sfBool` - ``sfTrue`` to show, ``sfFalse`` to hide.
+
 Drawing
 ~~~~~~~
 

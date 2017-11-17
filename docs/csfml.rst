@@ -206,7 +206,7 @@ In CSFML, there are 4 types of objects that can be displayed, 3 of them beign re
 		:states: :c:type:`sfRenderStates *` - This can be used to use advanced render options, such as shaders, transfomations etc...
 
 Examples
-========
+--------
 
 RenderWindow
 ~~~~~~~~~~~~

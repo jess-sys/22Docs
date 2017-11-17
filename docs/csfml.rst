@@ -20,7 +20,7 @@ Reference
 Window managing
 ~~~~~~~~~~~~~~~
 
-.. c:type:: sfRenderWindow *
+.. c:type:: sfRenderWindow
 
 This is the most basic element of any graphic program : a window.
 

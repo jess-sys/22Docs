@@ -31,22 +31,26 @@ This is the most basic element of any graphic program : a window.
 
 This function will setup a new window, based on the parameters given.
 
-:param mode: :c:type:`sfVideoMode` : The video mode to use (width, height and bits per pixel of the window).
+	**Parameters**
 
-:param title: ``const char *`` : The title of the window.
+		:mode: :c:type:`sfVideoMode` : The video mode to use (width, height and bits per pixel of the window).
 
-:param style: :c:type:`sfUint32` : You must specify at least one of the following :
+		:title: ``const char *`` : The title of the window.
 
-	* sfNone : None of the other style options will be used.
-	* sfResize : Will add a "resize" button that will allow you to change the size of the window.
-	* sfClose : Will add a "close" button that will allow you to close your window.
-	* sfFullscreen : Will make your window full screen.
+		:style: :c:type:`sfUint32` : You must specify at least one of the following :
 
-	If you want to add two or more parameters, simply separate them using pipes (see example below).
+			* sfNone : None of the other style options will be used.
+			* sfResize : Will add a "resize" button that will allow you to change the size of the window.
+			* sfClose : Will add a "close" button that will allow you to close your window.
+			* sfFullscreen : Will make your window full screen.
 
-:param settings: :c:type:`sfContextSettings` * : Those are advanced render settings you can add. NULL to use default values.
+			If you want to add two or more parameters, simply separate them using pipes (see example below).
 
-:return: :c:type:`sfRenderWindow` New render window.
+		:settings: :c:type:`sfContextSettings` * : Those are advanced render settings you can add. NULL to use default values.
+
+	**Return**
+
+		:c:type:`sfRenderWindow` : New render window.
 
 .. c:function:: sfRenderWindow *sfRenderWindow_createUnicode(sfVideoMode mode, const sfUint32 *title, sfUint32 style, const sfContextSettings *settings)
 
@@ -61,27 +65,35 @@ This function takes the same parameters as :c:func:`sfRenderWindow_create`, but 
 
 This function allows you to destroy an existing window.
 
-:param window: :c:type:`sfRenderWindow *` : The RenderWindow to destroy.
+	**Parameter**
+
+		:window: :c:type:`sfRenderWindow *` : The RenderWindow to destroy.
 
 .. c:function:: void sfRenderWindow_close(sfRenderWindow *window)
 
 This function will close a render window (while not destroying it's internal data.)
 
-:param window: :c:type:`sfrenderWindow *` : The RenderWindow to close.
+	**Parameter**
+
+		:window: :c:type:`sfrenderWindow *` : The RenderWindow to close.
 
 .. c:function:: void sfRenderWindow_clear(sfRenderWindow *window, sfColor color)
 
 This function will clear all pixels in the window, replacing them with the given color.
 
-:param window: :c:type:`sfRenderWindow *` : The RenderWindow to clear.
+	**Parameters**
 
-:param color: :c:type:`sfColor` : The color to which all pixel will change.
+		:window: :c:type:`sfRenderWindow *` : The RenderWindow to clear.
+
+		:color: :c:type:`sfColor` : The color to which all pixel will change.
 
 .. c:function:: void sfRenderWindow_display(sfRenderWindow *window)
 
 This function will display all sprites on screen.
 
-:param window: :c:type:`sfRenderWindow *` : The RenderWindow to display.
+	**Parameter**
+
+		:window: :c:type:`sfRenderWindow *` : The RenderWindow to display.
 
 Getting window data
 +++++++++++++++++++
@@ -90,17 +102,25 @@ There are a lot of data that can be obtained from a :c:type:`sfRenderWindow` obj
 
 .. c:function:: sfVector2u sfRenderWindow_getSize(const sfRenderWindow *window)
 
-Returns a :c:type:`sfVector2u` containing the size of the window in pixels.
+This function allows you to know the size of a given render window.
+
+	**Return**
+
+		:c:type:`sfVector2u` : Contains the size of the window in pixels.
 
 .. c:function:: sfBool sfRenderWindow_hasFocus(sfRenderWindow *window)
 
-:return: :c:type:`sfBool` : Will be ``sfTrue`` if the window has focus (i.e. it can receive inputs), ``sfFalse`` otherwise. This function can be useful if you want to pose your program if the window doesn't have focus.
+	**Return**
+
+		:c:type:`sfBool` : Will be ``sfTrue`` if the window has focus (i.e. it can receive inputs), ``sfFalse`` otherwise. This function can be useful if you want to pose your program if the window doesn't have focus.
 
 .. c:function:: sfBool sfRenderWindow_isOpen(sfRenderWindow *window)
 
 Tell whether or not a render window is open.
 
-:return: :c:type:`sfBool` : Will be ``sfTrue`` if the window is open, ``sfFalse`` otherwise.
+	**Return**
+
+		:c:type:`sfBool` : Will be ``sfTrue`` if the window is open, ``sfFalse`` otherwise.
 
 Other useful options
 ++++++++++++++++++++
@@ -111,20 +131,25 @@ Here are all other functions that I (Oursin) find useful for our first projects.
 
 This function will check the event queue and pop one. As such, if you want your program to take all inputs into account, it is highly advised to empty the event queue at the start of your game loop.
 
+	**Parameters**
 
-:param window: :c:type:`sfRenderWindow *` : The target window.
+		:window: :c:type:`sfRenderWindow *` : The target window.
 
-:param event: :c:type:`sfEvent *` : This must take a pointer to the sfEvent object which will be filled.
+		:event: :c:type:`sfEvent *` : This must take a pointer to the sfEvent object which will be filled.
 
-:return: A :c:type:`sfBool` will be returned, indicating whether or not an event was returned.
+	**Return**
+
+		A :c:type:`sfBool` will be returned, indicating whether or not an event was returned.
 
 .. c:function:: void sfRenderWindow_setFramerateLimit(sfRenderWindow *window, unsigned int limit)
 
 This function allows you to set your program's framerate.
 
-:param window: :c:type:`sfRenderWindow` : Target render window.
+	**Parameters**
 
-:param limit: ``unsigned int`` : Defines the maximum number of frames your program should display each second.
+		:window: :c:type:`sfRenderWindow` : Target render window.
+
+		:limit: ``unsigned int`` : Defines the maximum number of frames your program should display each second.
 
 Drawing
 ~~~~~~~
@@ -145,18 +170,18 @@ In CSFML, there are 4 types of objects that can be displayed, 3 of them beign re
 
 	**Parameters**
 
-		:param window: :c:type:`sfRenderWindow *` : The window to draw to.
+		:window: :c:type:`sfRenderWindow *` : The window to draw to.
 
-		:param sprite: :c:type:`sfText *` : The text object to display on screen. Note that this is not a char *, but an sfText object, which must be created first.
+		:sprite: :c:type:`sfText *` : The text object to display on screen. Note that this is not a char *, but an sfText object, which must be created first.
 
-		:param states: :c:type:sfRenderStates * : This can be used to use advanced render options, such as shaders, transfomations etc...
+		:states: :c:type:`sfRenderStates *` : This can be used to use advanced render options, such as shaders, transfomations etc...
 
 .. c:function:: void sfRenderWindow_drawShape(sfRenderWindow *window, sfShape *shape, sfRenderStates *states)
 
 	**Parameters**
 
-		:param window: :c:type:`sfRenderWindow *` : The window to draw to.
+		:window: :c:type:`sfRenderWindow *` : The window to draw to.
 
-		:param sprite: :c:type:`sfShape *` : The shape object to display on screen.
+		:sprite: :c:type:`sfShape *` : The shape object to display on screen.
 
-		:param states: :c:type:`sfRenderStates *` : This can be used to use advanced render options, such as shaders, transfomations etc...
+		:states: :c:type:`sfRenderStates *` : This can be used to use advanced render options, such as shaders, transfomations etc...

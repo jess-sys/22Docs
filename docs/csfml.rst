@@ -41,7 +41,7 @@ This function will setup a new window, based on the parameters given.
 
 	If you want to add two or more parameters, simply separate them using pipes (see example below).
 
-:param settings: :c::type:`sfContextSettings` * : Those are advanced render settings you can add. NULL to use default values.
+:param settings: :c:type:`sfContextSettings` * : Those are advanced render settings you can add. NULL to use default values.
 
 .. c:function:: sfRenderWindow *sfRenderWindow_createUnicode(sfVideoMode mode, const sfUint32 *title, sfUint32 style, const sfContextSettings *settings)
 

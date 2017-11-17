@@ -17,8 +17,11 @@ Just to be sure that you still know the basics.
 Reference
 ---------
 
+Window
+~~~~~~
+
 Window managing
-~~~~~~~~~~~~~~~
++++++++++++++++
 
 .. c:type:: sfRenderWindow
 
@@ -43,6 +46,8 @@ This function will setup a new window, based on the parameters given.
 
 :param settings: :c:type:`sfContextSettings` * : Those are advanced render settings you can add. NULL to use default values.
 
+:return: :c:type:`sfRenderWindow` New render window.
+
 .. c:function:: sfRenderWindow *sfRenderWindow_createUnicode(sfVideoMode mode, const sfUint32 *title, sfUint32 style, const sfContextSettings *settings)
 
 This function takes the same parameters as :c:func:`sfRenderWindow_create`, but this will take an array of integers as title, allowing you to have a unicode title.
@@ -56,19 +61,19 @@ This function takes the same parameters as :c:func:`sfRenderWindow_create`, but 
 
 This function allows you to destroy an existing window.
 
-:param window: ``sfRenderWindow *`` : The RenderWindow to destroy.
+:param window: :c:type:`sfRenderWindow *` : The RenderWindow to destroy.
 
 .. c:function:: void sfRenderWindow_close(sfRenderWindow *window)
 
 This function will close a render window (while not destroying it's internal data.)
 
-:param window: ``sfrenderWindow *`` : The RenderWindow to close.
+:param window: :c:type:`sfrenderWindow *` : The RenderWindow to close.
 
 .. c:function:: void sfRenderWindow_clear(sfRenderWindow *window, sfColor color)
 
 This function will clear all pixels in the window, replacing them with the given color.
 
-:param window: ``sfRenderWindow *`` : The RenderWindow to clear.
+:param window: :c:type:`sfRenderWindow *` : The RenderWindow to clear.
 
 :param color: :c:type:`sfColor` : The color to which all pixel will change.
 
@@ -76,7 +81,50 @@ This function will clear all pixels in the window, replacing them with the given
 
 This function will display all sprites on screen.
 
-:param window: ``sfRenderWindow *`` : The RenderWindow to display.
+:param window: :c:type:`sfRenderWindow *` : The RenderWindow to display.
+
+Getting window data
++++++++++++++++++++
+
+There are a lot of data that can be obtained from a :c:type:`sfRenderWindow` object. As I don't want to spend my whole life writing this paragraph while knowing that no one will ever read this, I'll only list a bunch of useful functions. I'll probably add the others sooner or later.
+
+.. c:function:: sfVector2u sfRenderWindow_getSize(const sfRenderWindow *window)
+
+Returns a :c:type:`sfVector2u` containing the size of the window in pixels.
+
+.. c:function:: sfBool sfRenderWindow_hasFocus(sfRenderWindow *window)
+
+:return: :c:type:`sfBool` : Will be ``sfTrue`` if the window has focus (i.e. it can receive inputs), ``sfFalse`` otherwise. This function can be useful if you want to pose your program if the window doesn't have focus.
+
+.. c:function:: sfBool sfRenderWindow_isOpen(sfRenderWindow *window)
+
+Tell whether or not a render window is open.
+
+:return: :c:type:`sfBool` : Will be ``sfTrue`` if the window is open, ``sfFalse`` otherwise.
+
+Other useful options
+++++++++++++++++++++
+
+Here are all other functions that I (Oursin) find useful for our first projects.
+
+.. c:function:: sfBool sfRenderWindow_pollEvent(sfRenderWindow *window, sfEvent *event)
+
+This function will check the event queue and pop one. As such, if you want your program to take all inputs into account, it is highly advised to empty the event queue at the start of your game loop.
+
+
+:param window: :c:type:`sfRenderWindow *` : The target window.
+
+:param event: :c:type:`sfEvent *` : This must take a pointer to the sfEvent object which will be filled.
+
+:return: A :c:type:`sfBool` will be returned, indicating whether or not an event was returned.
+
+.. c:function:: void sfRenderWindow_setFramerateLimit(sfRenderWindow *window, unsigned int limit)
+
+This function allows you to set your program's framerate.
+
+:param window: :c:type:`sfRenderWindow` : Target render window.
+
+:param limit: ``unsigned int`` : Defines the maximum number of frames your program should display each second.
 
 Drawing
 ~~~~~~~
@@ -85,24 +133,30 @@ In CSFML, there are 4 types of objects that can be displayed, 3 of them beign re
 
 .. c:function:: void sfRenderWindow_drawSprite(sfRenderWindow *window, const sfSprite *sprite, sfRenderStates *states)
 
-:param window: ``sfRenderWindow *`` : The window to draw to.
+	**Parameters**
 
-:param sprite: ``sfSprite *`` : The sprite to draw.
+		:window: :c:type:`sfRenderWindow *` - The window to draw to.
 
-:param states: ``sfRenderStates *`` : This can be used to use advanced render options, such as shaders, transfomations etc...
+		:sprite: :c:type:`sfSprite *` : The sprite to draw.
+
+		:states: :c:type:`sfRenderStates *` : This can be used to use advanced render options, such as shaders, transfomations etc...
 
 .. c:function:: void sfRenderWindow_drawText(sfRenderWindow *window, sfText *text, sfRenderStates *states)
 
-:param window: ``sfRenderWindow *`` : The window to draw to.
+	**Parameters**
 
-:param sprite: ``sfText *`` : The text object to display on screen. Note that this is not a char *, but an sfText object, which must be created first.
+		:param window: :c:type:`sfRenderWindow *` : The window to draw to.
 
-:param states: ``sfRenderStates *`` : This can be used to use advanced render options, such as shaders, transfomations etc...
+		:param sprite: :c:type:`sfText *` : The text object to display on screen. Note that this is not a char *, but an sfText object, which must be created first.
+
+		:param states: :c:type:sfRenderStates * : This can be used to use advanced render options, such as shaders, transfomations etc...
 
 .. c:function:: void sfRenderWindow_drawShape(sfRenderWindow *window, sfShape *shape, sfRenderStates *states)
 
-:param window: :c:type:`sfRenderWindow *` : The window to draw to.
+	**Parameters**
 
-:param sprite: ``sfShape *`` : The shape object to display on screen.
+		:param window: :c:type:`sfRenderWindow *` : The window to draw to.
 
-:param states: ``sfRenderStates *`` : This can be used to use advanced render options, such as shaders, transfomations etc...
+		:param sprite: :c:type:`sfShape *` : The shape object to display on screen.
+
+		:param states: :c:type:`sfRenderStates *` : This can be used to use advanced render options, such as shaders, transfomations etc...

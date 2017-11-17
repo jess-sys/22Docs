@@ -20,7 +20,7 @@ Reference
 Window managing
 ~~~~~~~~~~~~~~~
 
-.. c:type:: sfRenderWindow
+.. c:type:: sfRenderWindow *
 
 This is the most basic element of any graphic program : a window.
 
@@ -95,6 +95,14 @@ In CSFML, there are 4 types of objects that can be displayed, 3 of them beign re
 
 :param window: ``sfRenderWindow *`` : The window to draw to.
 
-:param sprite: ``sfSprite *`` : The text object to display on screen. Note that this is not a char *, but an sfText object, which must be created first.
+:param sprite: ``sfText *`` : The text object to display on screen. Note that this is not a char *, but an sfText object, which must be created first.
+
+:param states: ``sfRenderStates *`` : This can be used to use advanced render options, such as shaders, transfomations etc...
+
+.. c:function:: void sfRenderWindow_drawShape(sfRenderWindow *window, sfShape *shape, sfRenderStates *states)
+
+:param window: :c:type:`sfRenderWindow *` : The window to draw to.
+
+:param sprite: ``sfShape *`` : The shape object to display on screen.
 
 :param states: ``sfRenderStates *`` : This can be used to use advanced render options, such as shaders, transfomations etc...

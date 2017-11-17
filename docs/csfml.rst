@@ -161,16 +161,6 @@ This function enables or disables automatic key-repeat for keydown events. If en
 
 		:enabled: :c:type:`sfBool` - ``sfTrue`` to enable, ``sfFalse`` to disable.
 
-.. c:function:: void sfRenderWindow_setMouseCursorGrabbed(sfRenderWindow *window, sfBool grabbed)
-
-This function allows you to grab or release the mouse cursor. If the cursor is grabbed, it may no longer be moved outside the window's bounds. Note that this function is only useful while the window has focus and if it is not in fullscreen mode (fullscreen windows always grab the cursor).
-
-	**Parameters**
-
-		:window: :c:type:`sfRenderWindow` - Target render window.
-
-		:grabbed: :c:type:`sfBool` - ``sfTrue`` to enable, ``sfFalse`` to disable.
-
 .. c:function:: void sfRenderWindow_setMouseCursorVisible(sfRenderWindow *window, sfBool show)
 
 This function allows you to hide the mouse cursor on a render window.
@@ -214,3 +204,34 @@ In CSFML, there are 4 types of objects that can be displayed, 3 of them beign re
 		:sprite: :c:type:`sfShape *` - The shape object to display on screen.
 
 		:states: :c:type:`sfRenderStates *` - This can be used to use advanced render options, such as shaders, transfomations etc...
+
+Examples
+========
+
+RenderWindow
+~~~~~~~~~~~~
+
+Here is a sample example of most functions related to :c:type:`sfRenderWindow`. For the following example, we will assume that ``sprite``, ``text`` and ``shape`` were already created, and are variables of type :c:type:`sfSprite`, :c:type:`sfText` and :c:type:`sfShape`, respectively.
+
+We will also assume that ``event`` is of type ``sfEvent``.
+
+.. code-block:: c
+
+	sfVideoMode mode = {1080, 720};
+	sfRenderWindow *window;
+
+	window = sfRenderWindow_create(mode, "window", sfClose, NULL);
+	sfRenderWindow_setFramerateLimit(window, 60);
+	while (sfRenderWindow_isOpen(window) && sfRenderWindow_hasFocus
+						(window)) {
+		while (sfRenderWindow_pollEvent(window, &event)) {
+			if (event.type == sfEvtClosed)
+				sfRenderWindow_close(window);
+		}
+		sfRenderWindow_clear(window, sfBlack);
+		sfRenderWindow_drawSprite(window, sprite, NULL);
+		sfRenderWindow_drawShape(window, shape, NULL);
+		sfRenderWindow_drawText(window, text, NULL);
+		sfRenderWindow_display(window);
+	}
+	sfRenderWindow_destroy(window);

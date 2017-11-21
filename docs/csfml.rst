@@ -217,7 +217,7 @@ We will also assume that ``event`` is of type ``sfEvent``.
 
 .. code-block:: c
 
-	sfVideoMode mode = {1080, 720};
+	sfVideoMode mode = {1080, 720, 32};
 	sfRenderWindow *window;
 
 	window = sfRenderWindow_create(mode, "window", sfClose, NULL);

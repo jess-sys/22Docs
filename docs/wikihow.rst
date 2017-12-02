@@ -43,7 +43,7 @@ Now i'll show you how to set all values to 42.
 
 	.. code-block:: c
 
-		char * my_reset_array(char *array)
+		char *my_reset_array(char *array)
 		{
 			int i = my_strlen(array);
 		}
@@ -54,7 +54,7 @@ Now i'll show you how to set all values to 42.
 
 	.. code-block:: c
 
-		char * my_reset_array(char *array)
+		char *my_reset_array(char *array)
 		{
 			int i = my_strlen(array);
 
@@ -69,7 +69,7 @@ Now i'll show you how to set all values to 42.
 
 	.. code-block:: c
 
-		char * my_reset_array(char *array)
+		char *my_reset_array(char *array)
 		{
 			int i = my_strlen(array);
 

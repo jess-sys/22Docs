@@ -6,7 +6,7 @@
 Technical Documentation
 =======================
 
-.. caution:: 
+.. caution::
    We are currently writing this documentation. It may be incomplete,
    imprecise, use it at your own risk.
 
@@ -21,6 +21,7 @@ Table of contents
    criterion
    csfml
    winactivation
+   wikihow
 
 Introduction
 ------------

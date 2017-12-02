@@ -3,7 +3,7 @@ WikiHow
 
 Have you ever wondered how to properly malloc an integer variable ? Here you'll find the answers to all your questions !
 
-.. note::
+.. warning::
 	Please do not consider this page as a reliable source of knowledge. If you really believe anything here, you're even dumber than you look.
 
 How to malloc an int

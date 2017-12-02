@@ -21,3 +21,8 @@ Now that we know that, here's a sample code to help you create you integer that 
 .. code-block:: c
 
 	int integer = malloc(sizeof(size_t));
+
+.. warning::
+
+	Do not EVER try to malloc infinity onto a void variable. DO YOU REALLY WANT TO KNOW WHAT HAPPENS WHEN YOU PUT AN INFINITY INTO NOTHING ? I do not.
+	So please be mercyful and spare our lives.

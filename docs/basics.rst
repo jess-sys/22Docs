@@ -72,4 +72,6 @@ Our ``short`` has a value of 42
 In computer's memory, it takes 2 bytes to stores our value.
 It will look like that
 
-0 0 0 0 0 0 0 0 | 0 0 0 1 0 1 0 1
+.. highlight:: binary
+
+   0 0 0 0 0 0 0 0  0 0 0 1 0 1 0 1

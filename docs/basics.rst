@@ -46,7 +46,8 @@ Arithmetic Operators
 
    Addition is used to add operands
 
-.. c:code-block:: c
+.. code-block:: c
+
    int a = 10;
    int b = 15;
 

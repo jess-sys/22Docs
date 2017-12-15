@@ -64,14 +64,11 @@ A bit-by-bit operation is an operation that use binary values
 
 **Binary ?**
 
-Let's take an :c:type:`short` as an example
+Let's take a :c:type:`short` as an example
 
 Our :c:type:`short` has a value of 42
 
 In computer's memory, it takes 4 bytes to stores our value.
 It will look like that
 
-================================
-            Binary
---------------------------------
- 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 1
+0 0 0 0 0 0 0 0 | 0 0 0 1 0 1 0 1

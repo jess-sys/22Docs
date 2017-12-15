@@ -35,3 +35,43 @@ Integers
 +---------------+----------------------------+---------------------------+-------+
 | UNSIGNED SHORT|0                           |65,535                     |2      |
 +---------------+----------------------------+---------------------------+-------+
+
+Operators
+-----------
+
+Arithmetic Operators
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. topic:: Addition : +
+
+   Addition is used to add operands
+
+.. c:code::
+   int a = 10;
+   int b = 15;
+
+
+Now a + b = 30
+
+Bitwise Operators
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Bitwise operator perfom bit-by-bit operation.
+
+**Did you just say bit-by-bit operation ?**
+
+A bit-by-bit operation is an operation that use binary values
+
+**Binary ?**
+
+Let's take an :c:type:`short` as an example
+
+Our :c:type:`short` has a value of 42
+
+In computer's memory, it takes 4 bytes to stores our value.
+It will look like that
+
+     Byte 1            Byte 2
++-+-+-+-+-+-+-+-+ +-+-+-+-+-+-+-+-+
+|0|0|0|0|0|0|0|0| |0|0|0|1|0|1|0|1|
++-+-+-+-+-+-+-+-+ +-+-+-+-+-+-+-+-+

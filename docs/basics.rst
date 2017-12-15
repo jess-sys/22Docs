@@ -46,7 +46,7 @@ Arithmetic Operators
 
    Addition is used to add operands
 
-.. c:code::
+.. c:code-block:: c
    int a = 10;
    int b = 15;
 
@@ -64,11 +64,11 @@ A bit-by-bit operation is an operation that use binary values
 
 **Binary ?**
 
-Let's take a :c:type:`short` as an example
+Let's take a ``short`` as an example
 
-Our :c:type:`short` has a value of 42
+Our ``short`` has a value of 42
 
-In computer's memory, it takes 4 bytes to stores our value.
+In computer's memory, it takes 2 bytes to stores our value.
 It will look like that
 
 0 0 0 0 0 0 0 0 | 0 0 0 1 0 1 0 1

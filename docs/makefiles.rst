@@ -40,6 +40,19 @@ files in ``$(SRC)`` and compile them into ``.o`` files.
 
    OBJ = $(SRC:.c=.o)
 
+For the compilation there is a feature that allow you to compile each ``.c`` with flags, it's the ``+=``.
+For example let's add verification of errors flags : ``-Werror -Wextra`` and a flags to find ``.h`` of your project : ``-I./include``.
+You can call this variable ``CFLAGS`` for compilation's flags.
+
+.. code-block:: none
+
+   CFLAGS += -Werror -Wextra -I./include
+
+.. admonition:: Be careful !
+   :class: attention
+
+   You don't have to call this variable in your Makefile, he will solo add it to the compilation of your ``.c``.
+ 
 Now, set the name of your final binary using ``NAME``, so the AutoGrader can
 find your binary correctly.
 
@@ -52,7 +65,7 @@ Then, it is mandatory to create a $(NAME) rule that will execute other rules, an
 .. code-block:: none
 
    $(NAME): $(OBJ)
-            gcc -Wall -Wextra -o $(NAME) $(OBJ)
+            gcc -o $(NAME) $(OBJ)
 
    all:     $(NAME)
 
@@ -96,7 +109,35 @@ And that's pretty much it ! Your Makefile is now ready to use.
 Criterion Makefile
 ------------------
 
+At EPITECH, you use ``criterion`` for unit tests. In order to make it clean there is a approach given by EPITECH.
 
+First of all, you have to add a new rule to your main Makefile, according to EPITECH this rule should be named ``tests_run``.
+
+.. admonition:: Pro tip
+   :class: hint
+
+   In order to make it cleaner we recommend you to another Makefile in the tests directory and link to the main.
+   To call a Makefile rule of your tests Makefile just type : make -C tests/ [rule_name] in your main Makefile.
+
+The ``tests_run`` rule should compile your sources files ``.c`` and your tests files. This rule must launch your binary ``./unit-tests``.
+
+.. admonition:: Mendatory !
+   :class: attention
+
+   You never have to put your main function in the source files that you compile for unit tests : Criterion have his own.
+
+Your tests must compile with the CFLAG ``--coverage`` (see Generic Makefile). This flag will create ``.gcda`` and ``.gcno`` of your sources files.
+
+.. admonition:: Tip
+   :class: hint
+
+   Make a rule to clean all your ``.gcda`` and ``.gcno`` files.
+
+Now, when you launch your tests_run rule, your binary of tests should compile again and execute so that you can see if you passed tough your tests.
+You should see your files from --coverage. You can use the gcov [files] to see how many line were executed when you launch your unit tests.
+
+
+Clear all ``.gcda``, ``.gcno`` and ``.c.gcov`` and you can push it to the AutoGrader !
 
 Library Makefile
 ----------------

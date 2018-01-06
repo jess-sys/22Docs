@@ -38,6 +38,9 @@ Invalid read/write
 
 One of the most common errors you will encounter are invalid reads or writes.
 
+Invalid write
+/////////////
+
 First, let's write a simple C program.
 
 .. code-block:: c
@@ -91,6 +94,9 @@ Then the line ``at 0x400553: main (test.c:7)`` tells you at which line you error
 
 At the line ``Address 0x521004a is 0 bytes after a block of size 10 alloc\'d``, it also tells you that the invalid adress is located right after a block of ten bytes allocated.
 What is means is that a 10 bytes (so probably 10 characters) long memory zone was allocated, but we tried to write an eleventh character.
+
+Invalid read
+////////////
 
 This other code will produce a Invalid read error :
 
@@ -147,9 +153,9 @@ Well, a jump is a computer instruction similar to a ``goto`` in C. There are sev
 which means that the jump will be taken if a previous test was successful, and will not occur otherwise.
 
 In this case, my program had a conditional jump, but one of the values that were tested was not initialized, which will lead to unexpected behaviour. It means that the outcome of the test may change.
-For example it could work as intented on your computer, but could fail during the autograder's tests
+For example it could work as intented on your computer, but could fail during the autograder's tests.
 
-..note::
+.. note::
 	This type of error could happen if you do some tests involving a recently malloc'd block. (Note that malloc will *never* initialize your data).
 
 Syscall param points to unadressable bytes

@@ -23,9 +23,10 @@ To use valgrind to debug your program, you can simply add `valgrind` in front of
 
 .. code-block:: bash
 
-	valgrind [valgrind\'s options] ./program [program\'s arguments]
+	valgrind [valgrind's options] ./program [program's arguments]
 
 Valgrind will now lauch your program and report any error it detects.
+==14693==  Access not within mapped region at address 0x0
 
 Valgrind's messages
 -------------------

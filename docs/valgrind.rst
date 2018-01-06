@@ -87,5 +87,32 @@ So, what happened ? Well, valgrind detected an invalid write error in our progra
 "Invalid write" means that our program tries to write data in a memory zone which it doesn't own.
 
 But valgrind tells you way more than that. It first tells you the size of the written data, which is 1 bytes, and corresponds to the size of a character.
-Then tells you where you made a mistake. Line 7, which corresponds to ``str[i] = '\0'``. It also tells you that the invalid adress is located right after a block of ten bytes allocated.
+Then the line ``at 0x400553: main (test.c:7)`` tells you at which line you error occured. Line 7, which corresponds to ``str[i] = '\0'``.
+
+At the line ``Address 0x521004a is 0 bytes after a block of size 10 alloc\'d``, it also tells you that the invalid adress is located right after a block of ten bytes allocated.
 What is means is that a 10 bytes (so probably 10 characters) long memory zone was allocated, but we tried to write an eleventh character.
+
+This other code will produce a Invalid read error :
+
+.. code-block:: c
+
+	int main(void)
+	{
+	        int i;
+	        int *ptr = NULL;
+
+	        i = *ptr;
+	        return (0);
+	}
+
+If we compile and run this code, valgrind will produce this error :
+
+.. code-block:: bash
+
+	==26212== Invalid read of size 4
+	==26212==    at 0x400497: main (test.c:8)
+	==26212==  Address 0x0 is not stack\'d, malloc\'d or (recently) free\'d
+
+It means that we tried to read 4 bytes, starting at adress 0x0 (for those of you who don't know it yet, NULL is actually a pointer to adress 0x0, so we tried to read 4 butes starting from NULL).
+
+As before, valgrind also tells us that the error occured at line 8 of our code, which corresponds to this instruction : ``i = *ptr``.

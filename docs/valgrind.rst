@@ -57,7 +57,7 @@ First, let's write a simple C program.
 
 Yes, this code is absolutely useless, but still, let's compile it then run it with valgrind.
 
-.. code-block:: bash
+.. code-block:: console
 
 	$ gcc main.c -g
 	$ valgrind ./a.out
@@ -150,7 +150,7 @@ In this case, my program had a conditional jump, but one of the values that were
 For example it could work as intented on your computer, but could fail during the autograder's tests
 
 ..note
-	This type of error could happen if you do some tests involving a recently malloc'd block. (Note that malloc will underline(never) initialize your data).
+	This type of error could happen if you do some tests involving a recently malloc'd block. (Note that malloc will *never* initialize your data).
 
 Syscall param points to unadressable bytes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -235,7 +235,7 @@ Mismatched free
 
 The last error you can encounter is this one :
 
-.. code-block:: bash
+.. code-block:: console
 
 	==3073== Mismatched free() / delete / delete []
 	==3073==    at 0x4C2FD18: free (vg_replace_malloc.c:530)

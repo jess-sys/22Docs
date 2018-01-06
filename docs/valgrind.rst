@@ -116,3 +116,35 @@ If we compile and run this code, valgrind will produce this error :
 It means that we tried to read 4 bytes, starting at adress 0x0 (for those of you who don't know it yet, NULL is actually a pointer to adress 0x0, so we tried to read 4 butes starting from NULL).
 
 As before, valgrind also tells us that the error occured at line 8 of our code, which corresponds to this instruction : ``i = *ptr``.
+
+Conditional jumps
+~~~~~~~~~~~~~~~~~
+
+Let's create a new C program :
+
+.. code-block:: c
+
+	int main(void)
+	{
+		int i;
+
+		if (i == 0) {
+			my_printf("Hello\n");
+		}
+		return (0);
+	}
+
+Valgrind will produce this error :
+
+.. code-block:: bash
+
+	==28042== Conditional jump or move depends on uninitialised value(s)
+	==28042==    at 0x4004E3: main (test.c:5)
+
+This message may be a bit harder to understand.
+
+Well, a jump is a computer instruction similar to a ``goto`` in C. There are several types of jumps. Some are unconditionnal, meaning the jump will always occur. Some other are conditionals,
+which means that the jump will be taken if a previous test was successful, and will not occur otherwise.
+
+In this case, my program had a conditional jump, but one of the values that were tested was not initialized, which will lead to unexpected behaviour. It means that the outcome of the test may change.
+For example it could work as intented on your computer, but could fail during the autograder's tests

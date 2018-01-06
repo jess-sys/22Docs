@@ -148,3 +148,104 @@ which means that the jump will be taken if a previous test was successful, and w
 
 In this case, my program had a conditional jump, but one of the values that were tested was not initialized, which will lead to unexpected behaviour. It means that the outcome of the test may change.
 For example it could work as intented on your computer, but could fail during the autograder's tests
+
+..note
+	This type of error could happen if you do some tests involving a recently malloc'd block. (Note that malloc will underline(never) initialize your data).
+
+Syscall param points to unadressable bytes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Here is our program :
+
+.. code-block:: c
+
+	int main(void)
+	{
+		int fd = open("test", O_RDONLY);
+		char *buff = malloc(sizeof(char) * 3);
+
+		free(buff);
+		read(fd, buff, 2);
+	}
+
+``read`` will try to read at the adress pointed to by ``buff``. But this adress has already been freed, so valgrind will show us this error :
+
+
+.. code-block:: bash
+
+	==32002== Syscall param read(buf) points to unaddressable byte(s)
+	==32002==    at 0x4F3B410: __read_nocancel (in /usr/lib64/libc-2.25.so)
+	==32002==    by 0x400605: main (test.c:11)
+	==32002==  Address 0x5210040 is 0 bytes inside a block of size 3 free\'d
+	==32002==    at 0x4C2FD18: free (vg_replace_malloc.c:530)
+	==32002==    by 0x4005EF: main (test.c:10)
+	==32002==  Block was alloc\'d at
+	==32002==    at 0x4C2EB6B: malloc (vg_replace_malloc.c:299)
+	==32002==    by 0x4005DF: main (test.c:8)
+
+Here there is a lot of information that will help you debug your code. First, we know that we gave an invalid pointer to a system call, ``read`` in our case.
+
+Then valgrind tells us that this pointer is "0 bytes inside a block of size 3 free'd". In fact, we allocated a 3 bytes block, then freed it. "0 bytes inside" means that our pointer
+points to the very first byte of this block.
+
+Valgrind tells us where the error occured, where the block was freed and also where is was malloc'd.
+
+Invalid/mismatched frees
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+Invalid free
+////////////
+
+Another error you may encounter is the "Invalid free one". It means that we tried to free a pointer that cannot be freed. Here is an example :
+
+.. code-block:: c
+
+	int main(void)
+	{
+		char *buff = malloc(sizeof(char) * 54);
+
+		free(buff);
+		free(buff);
+		return (0);
+	}
+
+Yes, I agree, this error is obvious. But it does happen that the same pointer is freed twice, or that some programmer tries to free something that wasn't allocated. There are plenty of reasons for
+an invalid free to happen. Let's look at valgrind's message :
+
+.. code-block:: bash
+
+	==755== Invalid free() / delete / delete[] / realloc()
+	==755==    at 0x4C2FD18: free (vg_replace_malloc.c:530)
+	==755==    by 0x400554: main (test.c:10)
+	==755==  Address 0x5210040 is 0 bytes inside a block of size 54 free\'d
+	==755==    at 0x4C2FD18: free (vg_replace_malloc.c:530)
+	==755==    by 0x400548: main (test.c:9)
+	==755==  Block was alloc\'d at
+	==755==    at 0x4C2EB6B: malloc (vg_replace_malloc.c:299)
+	==755==    by 0x400538: main (test.c:7)
+
+Valgrind tells use that there is a problem with a free, a delete, a delete[] or a realloc, but since delete is a C++ instruction, and we're not allowed to use realloc at EPITECH, you will probably
+only use free.
+
+As before, valgrind tells us that the error occured because we tried to use free on an adress that belongs to an aloready freed block.
+
+Mismatched free
+///////////////
+
+The last error you can encounter is this one :
+
+.. code-block:: bash
+
+	==3073== Mismatched free() / delete / delete []
+	==3073==    at 0x4C2FD18: free (vg_replace_malloc.c:530)
+	==3073==    by 0x400613: main (in /home/oursin/a.out)
+	==3073==  Address 0xa09a5d0 is 0 bytes inside a block of size 368 alloc\'d
+	==3073==    at 0x4C2F1CA: operator new(unsigned long) (vg_replace_malloc.c:334)
+	==3073==    by 0x4E5AB0F: sfSprite_create (in /usr/local/lib/libc_graph_prog.so)
+	==3073==    by 0x400603: main (in /home/oursin/a.out)
+
+Here, I created a CSFML sprite using ``sfSprite_create``, then I tried to free this sprite, resulting in this error.
+
+In fact,  ``sfSprite_create`` does allocate some memory, but it does not use our dear friend ``malloc``, but it's C++ brother,  ``new``.
+And the problem is that something that has been allocated using ``new`` must be freed using ``delete``, not ``free``. As ``delete`` does not exist in C, you should use CSFML's ``sfSprite_destroy`` function.

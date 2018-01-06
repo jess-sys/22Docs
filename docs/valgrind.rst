@@ -21,7 +21,7 @@ How to use it ?
 
 To use valgrind to debug your program, you can simply add `valgrind` in front of your program's name and arguments. It should look like this
 
-.. code-block:: bash
+.. code-block:: console
 
 	$ valgrind [valgrind\'s options] ./program [program\'s arguments]
 
@@ -107,7 +107,7 @@ This other code will produce a Invalid read error :
 
 If we compile and run this code, valgrind will produce this error :
 
-.. code-block:: bash
+.. code-block:: console
 
 	==26212== Invalid read of size 4
 	==26212==    at 0x400497: main (test.c:8)
@@ -136,7 +136,7 @@ Let's create a new C program :
 
 Valgrind will produce this error :
 
-.. code-block:: bash
+.. code-block:: console
 
 	==28042== Conditional jump or move depends on uninitialised value(s)
 	==28042==    at 0x4004E3: main (test.c:5)
@@ -149,7 +149,7 @@ which means that the jump will be taken if a previous test was successful, and w
 In this case, my program had a conditional jump, but one of the values that were tested was not initialized, which will lead to unexpected behaviour. It means that the outcome of the test may change.
 For example it could work as intented on your computer, but could fail during the autograder's tests
 
-..note
+..note::
 	This type of error could happen if you do some tests involving a recently malloc'd block. (Note that malloc will *never* initialize your data).
 
 Syscall param points to unadressable bytes
@@ -171,7 +171,7 @@ Here is our program :
 ``read`` will try to read at the adress pointed to by ``buff``. But this adress has already been freed, so valgrind will show us this error :
 
 
-.. code-block:: bash
+.. code-block:: console
 
 	==32002== Syscall param read(buf) points to unaddressable byte(s)
 	==32002==    at 0x4F3B410: __read_nocancel (in /usr/lib64/libc-2.25.so)
@@ -213,7 +213,7 @@ Another error you may encounter is the "Invalid free one". It means that we trie
 Yes, I agree, this error is obvious. But it does happen that the same pointer is freed twice, or that some programmer tries to free something that wasn't allocated. There are plenty of reasons for
 an invalid free to happen. Let's look at valgrind's message :
 
-.. code-block:: bash
+.. code-block:: console
 
 	==755== Invalid free() / delete / delete[] / realloc()
 	==755==    at 0x4C2FD18: free (vg_replace_malloc.c:530)

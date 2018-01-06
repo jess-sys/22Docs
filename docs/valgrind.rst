@@ -26,13 +26,12 @@ To use valgrind to debug your program, you can simply add `valgrind` in front of
 	$ valgrind [valgrind\'s options] ./program [program\'s arguments]
 
 Valgrind will now lauch your program and report any error it detects.
-==14693==  Access not within mapped region at address 0x0
 
 Valgrind's messages
 -------------------
 
 .. WARNING::
-	Valgrind will give you more information about where your errors come from if your code has been compiled using GCC's `-g` flag.
+	Valgrind will give you more information about where your errors come from if your code has been compiled using GCC's ``-g`` flag.
 
 Invalid read/write
 ~~~~~~~~~~~~~~~~~~
@@ -87,6 +86,6 @@ So, what happened ? Well, valgrind detected an invalid write error in our progra
 
 "Invalid write" means that our program tries to write data in a memory zone which it doesn't own.
 
-But valgrind tells you way more than that. It first tells you where you made a mistake. Line 7, which corresponds to `str[i] = '\0'`. It also tells you the size of the written data, which is 1 bytes,
-and corresponds to the size of a character. Then it also tells you that the invalid adress is located right after a block of ten bytes allocated.
+But valgrind tells you way more than that. It first tells you the size of the written data, which is 1 bytes, and corresponds to the size of a character.
+Then tells you where you made a mistake. Line 7, which corresponds to ``str[i] = '\0'``. It also tells you that the invalid adress is located right after a block of ten bytes allocated.
 What is means is that a 10 bytes (so probably 10 characters) long memory zone was allocated, but we tried to write an eleventh character.

@@ -20,6 +20,7 @@ Table of contents
    makefiles
    criterion
    csfml
+   valgrind
    winactivation
    wikihow
 

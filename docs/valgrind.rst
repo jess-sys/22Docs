@@ -11,7 +11,7 @@ What is Valgrind ?
 
 Valgrind is an "instrumentation framework for building dynamic analysis tools", according to Valgrind's official documentation.
 
-Valgrind comes with a bunch of tools, but in this page we will only concentrate on one of those tools : Memcheck.
+Valgrind comes with a bunch of tools, but in this page we will only focus on one of those tools : Memcheck.
 
 Memcheck is a memory error detector. As such, it will detect and show you every memory error your code produces.
 It will also show you your program's memory leaks.
@@ -19,7 +19,7 @@ It will also show you your program's memory leaks.
 How to use it ?
 ~~~~~~~~~~~~~~~
 
-To use valgrind to debug your program, you can simply add `valgrind` in front of your program's name and arguments. It should look like this
+To use Valgrind to debug your program, you can simply add `Valgrind` in front of your program's name and arguments. It should look like this
 
 .. code-block:: console
 
@@ -80,20 +80,20 @@ Yes, this code is absolutely useless, but still, let's compile it then run it wi
 	==18332==     in use at exit: 0 bytes in 0 blocks
 	==18332==   total heap usage: 1 allocs, 1 frees, 10 bytes allocated
 	==18332==
-	==18332== All heap blocks were freed -- no leaks are possible
+	==18332== All heap blocks were free'd -- no leaks are possible
 	==18332==
 	==18332== For counts of detected and suppressed errors, rerun with: -v
 	==18332== ERROR SUMMARY: 5 errors from 1 contexts (suppressed: 0 from 0)
 
-So, what happened ? Well, valgrind detected an invalid write error in our program. But what does it mean ?
+So, what happened ? Well, Valgrind detected an invalid write error in our program. But what does it mean ?
 
-"Invalid write" means that our program tries to write data in a memory zone which it doesn't own.
+"Invalid write" means that our program tries to write data in a memory zone where it shouldn't.
 
-But valgrind tells you way more than that. It first tells you the size of the written data, which is 1 bytes, and corresponds to the size of a character.
-Then the line ``at 0x400553: main (test.c:7)`` tells you at which line you error occured. Line 7, which corresponds to ``str[i] = '\0'``.
+But Valgrind tells you way more than that. It first tells you the size of the written data, which is 1 bytes, and corresponds to the size of a character.
+Then the line ``at 0x400553: main (test.c:7)`` tells you at which line your error occured. Line 7, which corresponds to ``str[i] = '\0'``.
 
 At the line ``Address 0x521004a is 0 bytes after a block of size 10 alloc\'d``, it also tells you that the invalid adress is located right after a block of ten bytes allocated.
-What is means is that a 10 bytes (so probably 10 characters) long memory zone was allocated, but we tried to write an eleventh character.
+What this means is that a 10 bytes (so probably 10 characters) long memory zone was allocated, but we tried to write an eleventh byte.
 
 Invalid read
 ////////////
@@ -111,7 +111,7 @@ This other code will produce a Invalid read error :
 	        return (0);
 	}
 
-If we compile and run this code, valgrind will produce this error :
+If we compile and run this code, Valgrind will produce this error :
 
 .. code-block:: console
 
@@ -119,9 +119,9 @@ If we compile and run this code, valgrind will produce this error :
 	==26212==    at 0x400497: main (test.c:8)
 	==26212==  Address 0x0 is not stack\'d, malloc\'d or (recently) free\'d
 
-It means that we tried to read 4 bytes, starting at adress 0x0 (for those of you who don't know it yet, NULL is actually a pointer to adress 0x0, so we tried to read 4 butes starting from NULL).
+It means that we tried to read 4 bytes, starting at adress 0x0 (for those of you who don't know it yet, NULL is actually a pointer to adress 0x0, so we tried to read 4 bytes starting from NULL).
 
-As before, valgrind also tells us that the error occured at line 8 of our code, which corresponds to this instruction : ``i = *ptr``.
+As before, Valgrind also tells us that the error occured at line 8 of our code, which corresponds to this instruction : ``i = *ptr``.
 
 Conditional jumps
 ~~~~~~~~~~~~~~~~~
@@ -150,9 +150,9 @@ Valgrind will produce this error :
 This message may be a bit harder to understand.
 
 Well, a jump is a computer instruction similar to a ``goto`` in C. There are several types of jumps. Some are unconditionnal, meaning the jump will always occur. Some other are conditionals,
-which means that the jump will be taken if a previous test was successful, and will not occur otherwise.
+which means that the jump will be taken if a previous test was successful, and will not otherwise.
 
-In this case, my program had a conditional jump, but one of the values that were tested was not initialized, which will lead to unexpected behaviour. It means that the outcome of the test may change.
+In this case, our program had a conditional jump, because one of the values that were test was not initialized, it led to unexpected behaviour. It means that the outcome of the test may change.
 For example it could work as intented on your computer, but could fail during the autograder's tests.
 
 .. note::
@@ -174,7 +174,7 @@ Here is our program :
 		read(fd, buff, 2);
 	}
 
-``read`` will try to read at the adress pointed to by ``buff``. But this adress has already been freed, so valgrind will show us this error :
+``read`` will try to read at the adress pointed to by ``buff``. But this adress has already been free'd, so Valgrind will show us this error :
 
 
 .. code-block:: console
@@ -191,10 +191,10 @@ Here is our program :
 
 Here there is a lot of information that will help you debug your code. First, we know that we gave an invalid pointer to a system call, ``read`` in our case.
 
-Then valgrind tells us that this pointer is "0 bytes inside a block of size 3 free'd". In fact, we allocated a 3 bytes block, then freed it. "0 bytes inside" means that our pointer
+Then Valgrind tells us that this pointer is "0 bytes inside a block of size 3 free'd". In fact, we allocated a 3 bytes block, then free'd it. "0 bytes inside" means that our pointer
 points to the very first byte of this block.
 
-Valgrind tells us where the error occured, where the block was freed and also where is was malloc'd.
+Valgrind tells us where the error occured, where the block was free'd and also where is was malloc'd.
 
 Invalid/mismatched frees
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -203,7 +203,7 @@ Invalid/mismatched frees
 Invalid free
 ////////////
 
-Another error you may encounter is the "Invalid free one". It means that we tried to free a pointer that cannot be freed. Here is an example :
+Another error you may encounter is the "Invalid free" one. It means that we tried to free a pointer that cannot be free'd. Here is an example :
 
 .. code-block:: c
 
@@ -216,8 +216,8 @@ Another error you may encounter is the "Invalid free one". It means that we trie
 		return (0);
 	}
 
-Yes, I agree, this error is obvious. But it does happen that the same pointer is freed twice, or that some programmer tries to free something that wasn't allocated. There are plenty of reasons for
-an invalid free to happen. Let's look at valgrind's message :
+Yes, I agree, this error is obvious. But it does happen that the same pointer is twice free'd, or that some programmer tries to free something that wasn't allocated. There are plenty of reasons for
+an invalid free to happen. Let's look at Valgrind's message :
 
 .. code-block:: console
 
@@ -234,7 +234,7 @@ an invalid free to happen. Let's look at valgrind's message :
 Valgrind tells use that there is a problem with a free, a delete, a delete[] or a realloc, but since delete is a C++ instruction, and we're not allowed to use realloc at EPITECH, you will probably
 only use free.
 
-As before, valgrind tells us that the error occured because we tried to use free on an adress that belongs to an aloready freed block.
+As before, Valgrind tells us that the error occured because we tried to use free on an adress that belongs to an already free'd block.
 
 Mismatched free
 ///////////////
@@ -254,4 +254,4 @@ The last error you can encounter is this one :
 Here, I created a CSFML sprite using ``sfSprite_create``, then I tried to free this sprite, resulting in this error.
 
 In fact,  ``sfSprite_create`` does allocate some memory, but it does not use our dear friend ``malloc``, but it's C++ brother,  ``new``.
-And the problem is that something that has been allocated using ``new`` must be freed using ``delete``, not ``free``. As ``delete`` does not exist in C, you should use CSFML's ``sfSprite_destroy`` function.
+And the problem is that something that has been allocated using ``new`` must be free'd using ``delete``, not ``free``. As ``delete`` does not exist in C, you should use CSFML's ``sfSprite_destroy`` function.

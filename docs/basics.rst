@@ -37,7 +37,8 @@ Operators
 Arithmetic Operators
 ~~~~~~~~~~~~~~~~~~~~
 
-.. topic:: Addition : +
+Addition : +
+////////////
 
    Addition is used to add operands
 
@@ -63,13 +64,12 @@ A bit-by-bit operation is an operation that apply to each bit of a binary value.
 
 **Binary ?**
 
-Let's take a ``short`` as an example,
-our ``short`` has a value of 42.
+Let's take a ``short int`` as an example which value is 42.
 
-In computer's memory, it takes 2 bytes to stores our value.
+In a computer memory, it takes 2 bytes to store our value.
 It will look like that
 
-.. code-block:: python
+.. code-block:: none
 
    0 0 0 0 0 0 0 0  0 0 0 1 0 1 0 1
 
@@ -82,7 +82,8 @@ Logic are used in electronic, they have inputs and an output
 
 Look at the first gate:
 
-**AND**
+AND
+///
 
 .. code-block:: none
 
@@ -106,7 +107,8 @@ Look at the first gate:
 
 The output is 1 when both of the inputs are 1
 
-**OR**
+OR
+//
 
 .. code-block:: none
 
@@ -130,7 +132,8 @@ The output is 1 when both of the inputs are 1
 
 The output is 1 when at least one of the inputs is 1
 
-**XOR**
+XOR
+///
 
 .. code-block:: none
 
@@ -161,9 +164,10 @@ Now we are going to look at bitwise operators in C
 
 What operators do is applying logic gate to each one of bits in the variable
 
-.. topic:: AND : &
+AND : &
+///////
 
-	   AND operator apply AND gate to each bit
+AND operator apply AND gate to each bit
 
 .. code-block:: c
 
@@ -183,9 +187,10 @@ To represent the operation:
 a & b = 0
 
 
-.. topic:: OR : |
+OR : |
+//////
 
-	   OR operator apply OR gate to each bit
+OR operator apply OR gate to each bit
 
 .. code-block:: c
 

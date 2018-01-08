@@ -7,13 +7,6 @@
 C Basics
 ========
 
------------------
-Table of contents
------------------
-
-.. toctree::
-   :maxdepth: 2
-
 Just to be sure that you still know the basics.
 
 Types
@@ -39,10 +32,10 @@ Integers
 +---------------+----------------------------+---------------------------+-------+
 
 Operators
-=========
+---------
 
 Arithmetic Operators
----------------------
+~~~~~~~~~~~~~~~~~~~~
 
 .. topic:: Addition : +
 
@@ -57,12 +50,12 @@ Arithmetic Operators
 Now a + b = 30
 
 Bitwise Operators
-------------------
+~~~~~~~~~~~~~~~~~
 
 Bitwise operator perfom bit-by-bit operation.
 
 Binary
-~~~~~~~
+______
 
 **Did you just say bit-by-bit operation ?**
 
@@ -81,7 +74,7 @@ It will look like that
    0 0 0 0 0 0 0 0  0 0 0 1 0 1 0 1
 
 Logic gate
-~~~~~~~~~~~
+__________
 
 It is important to understand what a logic gate is.
 
@@ -162,7 +155,7 @@ The output is 1 when at least one of the inputs is 1
 The output is 1 when `only` one of the inputs is 1
 
 Operators
-~~~~~~~~~~
+_________
 
 Now we are going to look at bitwise operators in C
 
@@ -210,4 +203,3 @@ To represent the operation:
     00000000 00001111
 
 a | b = 10
-

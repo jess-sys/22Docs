@@ -82,8 +82,8 @@ Logic are used in electronic, they have inputs and an output
 
 Look at the first gate:
 
-AND
-///
+AND GATE
+/////////
 
 .. code-block:: none
 
@@ -107,8 +107,8 @@ AND
 
 The output is 1 when both of the inputs are 1
 
-OR
-//
+OR GATE
+////////
 
 .. code-block:: none
 
@@ -132,8 +132,8 @@ OR
 
 The output is 1 when at least one of the inputs is 1
 
-XOR
-///
+XOR GATE
+/////////
 
 .. code-block:: none
 
@@ -157,8 +157,8 @@ XOR
 
 The output is 1 when `only` one of the inputs is 1
 
-NOT
-///
+NOT GATE
+/////////
 
 .. code-block:: none
 

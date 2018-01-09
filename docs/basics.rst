@@ -56,7 +56,7 @@ Bitwise Operators
 Bitwise operator perfom bit-by-bit operation.
 
 Binary
-______
+@@@@@@
 
 **Did you just say bit-by-bit operation ?**
 
@@ -74,7 +74,7 @@ It will look like that
    0 0 0 0 0 0 0 0  0 0 0 1 0 1 0 1
 
 Logic gate
-__________
+@@@@@@@@@@
 
 It is important to understand what a logic gate is.
 
@@ -122,7 +122,7 @@ OR
 =====  =====  ======
    Inputs     Output
 ------------  ------
-  A      B    A & B
+  A      B    A | B
 =====  =====  ======
 0      0      0
 1      0      1
@@ -147,7 +147,7 @@ XOR
 =====  =====  ======
    Inputs     Output
 ------------  ------
-  A      B    A & B
+  A      B    A ^ B
 =====  =====  ======
 0      0      0
 1      0      1
@@ -157,8 +157,31 @@ XOR
 
 The output is 1 when `only` one of the inputs is 1
 
+NOT
+///
+
+.. code-block:: none
+
+	    +-----+
+            |     |
+       A ---|  1  |---- OUTPUT
+            |     |
+	    +-----+
+
+
+====== ======
+Inputs Output
+------ ------
+  A      ~A
+====== ======
+0         1
+1         0
+====== ======
+
+The output is the inverse of the inputs
+
 Operators
-_________
+@@@@@@@@@
 
 Now we are going to look at bitwise operators in C
 

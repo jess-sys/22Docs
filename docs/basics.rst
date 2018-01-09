@@ -171,8 +171,8 @@ AND operator apply AND gate to each bit
 
 .. code-block:: c
 
-   short a = 10; // 00000000 00001010
-   short b = 20; // 00000000 00010100
+   short int a = 10; // 00000000 00001010
+   short int b = 20; // 00000000 00010100
 
 
 To represent the operation:
@@ -194,8 +194,8 @@ OR operator apply OR gate to each bit
 
 .. code-block:: c
 
-   short a = 10; // 00000000 00001010
-   short b = 15; // 00000000 00001111
+   short int a = 10; // 00000000 00001010
+   short int b = 15; // 00000000 00001111
 
 
 To represent the operation:
@@ -208,3 +208,25 @@ To represent the operation:
     00000000 00001111
 
 a | b = 10
+
+XOR : ^
+///////
+
+XOR operator apply XOR gate to each bit
+
+.. code-block:: c
+
+   short int a = 10; // 00000000 00001010
+   short int b = 15; // 00000000 00001111
+
+
+To represent the operation:
+
+.. code-block:: none
+
+    00000000 00001010
+  & 00000000 00001111
+
+    00000000 00000101
+
+a ^ b = 5

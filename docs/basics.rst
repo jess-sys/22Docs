@@ -253,3 +253,23 @@ To represent the operation:
     00000000 00000101
 
 a ^ b = 5
+
+NOT : ~
+///////
+
+XOR operator apply XOR gate to each bit
+
+.. code-block:: c
+
+   short int a = 10; // 00000000 00001010
+
+
+To represent the operation:
+
+.. code-block:: none
+
+  ~ 00000000 00001010
+
+    11111111 11110101
+
+~a = -11

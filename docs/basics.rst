@@ -257,7 +257,7 @@ a ^ b = 5
 NOT : ~
 ///////
 
-XOR operator apply XOR gate to each bit
+NOT operator applies NOT gate to each bit
 
 .. code-block:: c
 

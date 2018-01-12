@@ -239,7 +239,7 @@ As before, Valgrind tells us that the error occured because we tried to use free
 Mismatched free
 ///////////////
 
-The last error you can encounter is this one :
+Another error you can encounter is this one :
 
 .. code-block:: console
 
@@ -255,3 +255,16 @@ Here, I created a CSFML sprite using ``sfSprite_create``, then I tried to free t
 
 In fact,  ``sfSprite_create`` does allocate some memory, but it does not use our dear friend ``malloc``, but it's C++ brother,  ``new``.
 And the problem is that something that has been allocated using ``new`` must be free'd using ``delete``, not ``free``. As ``delete`` does not exist in C, you should use CSFML's ``sfSprite_destroy`` function.
+
+Fishy values
+~~~~~~~~~~~~
+
+The last type of error you may see is this one :
+
+.. code-block:: console
+
+	==29010== Argument 'size' of function malloc has a fishy (possibly negative) value: -1
+	==29010==    at 0x4C2EB6B: malloc (vg_replace_malloc.c:299)
+	==29010==    by 0x4004EA: main (in /home/oursin/a.out)
+
+It simply means that you gave a impossible value to a system call. In this case I called ``malloc`` with argument ``-1``.

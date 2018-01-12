@@ -56,7 +56,7 @@ Bitwise Operators
 Bitwise operator perfom bit-by-bit operation.
 
 Binary
-______
+@@@@@@
 
 **Did you just say bit-by-bit operation ?**
 
@@ -74,7 +74,7 @@ It will look like that
    0 0 0 0 0 0 0 0  0 0 0 1 0 1 0 1
 
 Logic gate
-__________
+@@@@@@@@@@
 
 It is important to understand what a logic gate is.
 
@@ -82,8 +82,8 @@ Logic are used in electronic, they have inputs and an output
 
 Look at the first gate:
 
-AND
-///
+AND GATE
+/////////
 
 .. code-block:: none
 
@@ -107,8 +107,8 @@ AND
 
 The output is 1 when both of the inputs are 1
 
-OR
-//
+OR GATE
+////////
 
 .. code-block:: none
 
@@ -122,7 +122,7 @@ OR
 =====  =====  ======
    Inputs     Output
 ------------  ------
-  A      B    A & B
+  A      B    A | B
 =====  =====  ======
 0      0      0
 1      0      1
@@ -132,8 +132,8 @@ OR
 
 The output is 1 when at least one of the inputs is 1
 
-XOR
-///
+XOR GATE
+/////////
 
 .. code-block:: none
 
@@ -147,7 +147,7 @@ XOR
 =====  =====  ======
    Inputs     Output
 ------------  ------
-  A      B    A & B
+  A      B    A ^ B
 =====  =====  ======
 0      0      0
 1      0      1
@@ -157,8 +157,31 @@ XOR
 
 The output is 1 when `only` one of the inputs is 1
 
+NOT GATE
+/////////
+
+.. code-block:: none
+
+	    +-----+
+            |     |
+       A ---|  1  |---- OUTPUT
+            |     |
+	    +-----+
+
+
+====== ======
+Inputs Output
+------ ------
+  A      ~A
+====== ======
+0         1
+1         0
+====== ======
+
+The output is the inverse of the inputs
+
 Operators
-_________
+@@@@@@@@@
 
 Now we are going to look at bitwise operators in C
 
@@ -171,8 +194,8 @@ AND operator apply AND gate to each bit
 
 .. code-block:: c
 
-   short a = 10; // 00000000 00001010
-   short b = 20; // 00000000 00010100
+   short int a = 10; // 00000000 00001010
+   short int b = 20; // 00000000 00010100
 
 
 To represent the operation:
@@ -194,8 +217,8 @@ OR operator apply OR gate to each bit
 
 .. code-block:: c
 
-   short a = 10; // 00000000 00001010
-   short b = 15; // 00000000 00001111
+   short int a = 10; // 00000000 00001010
+   short int b = 15; // 00000000 00001111
 
 
 To represent the operation:
@@ -203,8 +226,50 @@ To represent the operation:
 .. code-block:: none
 
     00000000 00001010
-  & 00000000 00001111
+  | 00000000 00001111
 
     00000000 00001111
 
 a | b = 10
+
+XOR : ^
+///////
+
+XOR operator apply XOR gate to each bit
+
+.. code-block:: c
+
+   short int a = 10; // 00000000 00001010
+   short int b = 15; // 00000000 00001111
+
+
+To represent the operation:
+
+.. code-block:: none
+
+    00000000 00001010
+  ^ 00000000 00001111
+
+    00000000 00000101
+
+a ^ b = 5
+
+NOT : ~
+///////
+
+XOR operator apply XOR gate to each bit
+
+.. code-block:: c
+
+   short int a = 10; // 00000000 00001010
+
+
+To represent the operation:
+
+.. code-block:: none
+
+  ~ 00000000 00001010
+
+    11111111 11110101
+
+~a = -11

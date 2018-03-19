@@ -48,7 +48,7 @@ Addition : +
    int b = 15;
 
 
-Now a + b = 30
+Now a + b = 25
 
 Bitwise Operators
 ~~~~~~~~~~~~~~~~~

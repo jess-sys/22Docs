@@ -191,7 +191,7 @@ Here is a sample usage of this assert.
         int error(void)
         {
                 write(2, "error", 5);
-                exit(0);
+                return(0);
         }
 
         Test(errors, exit_code, .init=redirect_all_stdout)

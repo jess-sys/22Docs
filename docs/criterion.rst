@@ -179,6 +179,9 @@ Here is a sample usage of this assert.
 
 .. code-block:: c
 
+	#include <criterion/criterion.h>
+	#include <criterion/redirect.h>
+	
         void redirect_all_stdout(void)
         {
                 cr_redirect_stdout();
@@ -196,6 +199,9 @@ Here is a sample usage of this assert.
                 error();
                 cr_assert_stderr_eq_str("error", "");
         }
+
+..note::
+	Note that you MUST include criterion.h and redirect.h in this order, otherwise you tests won't work.
 
 
 Test options

@@ -200,7 +200,7 @@ Here is a sample usage of this assert.
                 cr_assert_stderr_eq_str("error", "");
         }
 
-..note::
+.. note::
 	Note that you MUST include criterion.h and redirect.h in this order, otherwise you tests won't work.
 
 

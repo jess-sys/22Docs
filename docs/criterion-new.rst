@@ -229,67 +229,67 @@ Predefined Tags
 
 Here is the complete list of all predefined tags :
 
-.. c:macro:: i8 int8_t
+.. c:macro:: int8_t i8
 
-.. c:macro:: i16 int16_t
+.. c:macro:: int16_t i16
 
-.. c:macro:: i32 int32_t
+.. c:macro:: int32_t i32
 
-.. c:macro:: i64 int64_t
+.. c:macro:: int64_t i64
 
-.. c:macro:: u8 uint8_t
+.. c:macro:: uint8_t u8
 
-.. c:macro:: u16 uint16_t
+.. c:macro:: uint16_t u16
 
-.. c:macro:: u32 uint32_t
+.. c:macro:: uint32_t u32
 
-.. c:macro:: u64 uint64_t
+.. c:macro:: uint64_t u64
 
-.. c:macro:: sz size_t
+.. c:macro:: size_t sz
 
-.. c:macro:: ptr void *
+.. c:macro:: void * ptr
 
-.. c:macro:: iptr intptr_t
+.. c:macro:: intptr_t iptr
 
-.. c:macro:: uptr uintptr_t
+.. c:macro:: uintptr_t uptr
 
-.. c:macro:: chr char
+.. c:macro:: char chr
 
 .. c:macro:: int int
 
-.. c:macro:: uint unsigned int
+.. c:macro:: unsigned int uint
 
 .. c:macro:: long long
 
-.. c:macro:: ulong unsigned long
+.. c:macro:: unsigned long ulong
 
-.. c:macro:: llong long long
+.. c:macro::long long llong
 
-.. c:macro:: ullong unsigned long long
+.. c:macro:: unsigned long long ullong
 
-.. c:macro:: flt float
+.. c:macro:: float flt
 
-.. c:macro:: dbl double
+.. c:macro:: double dbl
 
-.. c:macro:: ldbl long double
+.. c:macro:: long double ldbl
 
-.. c:macro:: cx_flt complex float
+.. c:macro::complex float cx_flt
 
-.. c:macro:: cx_dbl complex double
+.. c:macro:: complex double cx_dbl
 
-.. c:macro:: cx_ldbl complex long double
+.. c:macro:: complex long double cx_ldbl
 
-.. c:macro:: mem struct cr_mem
+.. c:macro::struct cr_mem mem
 
 See below for details about the implementation of this structure.
 
-.. c:macro:: str const char *
+.. c:macro:: const char * str
 
-.. c:macro:: wcs const wchar_t *
+.. c:macro:: const wchar_t * wcs
 
 String of wide characters
 
-.. c:macro:: tcs const TCHAR *
+.. c:macro:: const TCHAR * tcs
 
 Windows character string.
 
@@ -395,6 +395,7 @@ User-defined type example
 -------------------------
 
 .. code-block:: c
+
     #include <stdio.h>
     #include <criterion/criterion.h>
     #include <criterion/new/assert.h>

@@ -19,6 +19,7 @@ Table of contents
    basics
    makefiles
    criterion
+   criterion-new
    csfml
    valgrind
    winactivation

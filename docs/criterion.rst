@@ -86,7 +86,7 @@ Basic asserts
 		Test(suite_name, test_name) {
 			int i = 0;
 			int j = 2;
-			cr_assert("i * 2 == j", "The result was %d. Expected %d", i * 2, j);
+			cr_assert(i * 2 == j, "The result was %d. Expected %d", i * 2, j);
 		}
 
 .. c:function:: cr_assert(``condition``)

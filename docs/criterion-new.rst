@@ -329,13 +329,15 @@ However there are some functions to implement in order to use this type in your 
 
     For instance, these are fine:
 
-    .. code-block::
+    .. code-block:: c
+
         type(foo)
         type(struct foo)
 
     and these are not:
 
-    .. code-block::
+    .. code-block:: c
+
         type(foo *)
         type(int (&foo)(void))
 

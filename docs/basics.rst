@@ -230,7 +230,7 @@ To represent the operation:
 
     00000000 00001111
 
-a | b = 10
+a | b = 15
 
 XOR : ^
 ///////

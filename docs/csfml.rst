@@ -154,7 +154,6 @@ This function allows you to hide the mouse cursor on a render window.
 
 Drawing
 ~~~~~~~
-
 In CSFML, there are 4 types of objects that can be displayed, 3 of them beign ready to be used : sprites, text and shapes. The other one, vertex arrays, is designed to help you create your own drawable entities, but you would probably not use it for now.
 
 .. c:function:: void sfRenderWindow_drawSprite(sfRenderWindow *window, const sfSprite *sprite, sfRenderStates *states)
@@ -183,6 +182,24 @@ In CSFML, there are 4 types of objects that can be displayed, 3 of them beign re
 		:sprite: :c:type:`sfShape *` - The shape object to display on screen.
 
 		:states: :c:type:`sfRenderStates *` - This can be used to use advanced render options, such as shaders, transfomations etc...
+Textures
+~~~~~~~~~~~~
+In CSFML, textures are images stored in the graphics card memory. This makes them very fast to draw onto render targets or have a render target copied to them.
+
+.. c:function:: sfRenderTexture* sfRenderTexture_create(unsigned int width, unsigned int height, sfBool depthBuffer)
+
+	**Parameters**
+	
+		:width: :c:type:`unsigned int` - The width of the texture.
+		
+		:height: :c:type:`unsigned int` - The height of the texture.
+		
+		:depthBuffer: :c:type:`sfBool' - This is used to determine whether or not the texure will use depthBuffering
+		
+.. c:function:: void sfRenderTexture_destroy(sfRenderTexture* renderTexture)
+		
+		:renderTexture: :c:type:`renderTexture` - The texture to be deleted.
+
 
 Examples
 --------
